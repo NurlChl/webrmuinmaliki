@@ -1,0 +1,161 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\MemberRequest;
+use App\Models\Member;
+use App\Models\MemberCategory;
+use Illuminate\Support\Facades\Storage;
+
+class MemberController extends Controller
+{
+
+
+    public function category(MemberCategory $category)
+    {
+        // dd($category);
+
+        $members = Member::where('member_category_id', $category->id)
+                        ->with('memberCategory:id,name') 
+                        ->latest()
+                        ->paginate(10);
+
+        return view('members.index', [
+            'member_categories' => MemberCategory::all(),
+            'members' => $members,
+        ]);
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+
+        
+
+        $members = Member::query()
+                ->with('memberCategory', fn ($query) => $query->select(['id', 'name']))
+                ->filter(request(['search', 'category']))
+                ->latest()
+                ->paginate(10);
+
+
+        return view('members.index', [
+            
+            'member_categories' => MemberCategory::all(),
+            'members' => $members,
+
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('members.form', [
+
+            'member' => new Member(),
+            'member_categories' => MemberCategory::all(),
+            'page_meta' => [
+                'title' => 'Tambah Anggota',
+                'method' => 'post',
+                'url' => route('members.store'),
+            ]
+
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(MemberRequest $request)
+    {
+        // dd($request->validated());
+
+        $file = $request->file('image');
+
+
+        Member::create([
+
+            ...$request->validated(),
+
+            ...['image' => $file->store('images/members')],
+        ]);
+
+        return to_route('members.index')->with('success', 'Anggota baru berhasil ditambahkan');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Member $member)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Member $member)
+    {
+        return view('members.form', [
+
+            'member' => $member,
+            'member_categories' => MemberCategory::all(),
+            'selectedCategory' => $member->member_category_id,
+            'page_meta' => [
+                'title' => 'Edit Anggota : ' . $member->name,
+                'method' => 'put',
+                'url' => route('members.update', $member),
+            ]
+
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(MemberRequest $request, Member $member)
+    {
+        if ($request->hasFile('image')) {
+
+            Storage::delete($member->image);
+
+            $file = $request->file('image')->store('image/posts');
+
+        } else {
+
+            $file = $member->image;
+
+        }
+
+        $member->update([
+
+            'nim' => $request->nim,
+            'name' => $request->name,
+            'image' => $file,
+            'major' => $request->major,
+            'position' => $request->position,
+            'member_category_id' => $request->member_category_id,
+
+        ]);
+
+        return to_route('members.index')->with('success',  $request->name. ' : berhasil diubah');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Member $member)
+    {
+
+        // dd($member);
+
+        $member->delete();
+
+        return to_route('members.index')->with('success', $member->name . ' : berhasil dihapus');
+    }
+}
