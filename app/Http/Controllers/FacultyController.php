@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FacultyRequest;
 use App\Models\Faculty;
-use Illuminate\Http\Request;
 
 class FacultyController extends Controller
 {
@@ -12,7 +12,19 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
+        $faculties = Faculty::query()->latest()->paginate(20);
+
+        return view('faculties.index', [
+            'faculties' => $faculties,
+
+            'faculty' => new Faculty(),
+            'page_meta' => [
+                'title' => 'Fakultas',
+                'method' => 'post',
+                'url' => route('faculties.store'),
+            ]
+
+        ]);
     }
 
     /**
@@ -20,15 +32,31 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculties.index', [
+
+            'faculty' => new Faculty(),
+            'page_meta' => [
+                'title' => 'Fakultas',
+                'method' => 'post',
+                'url' => route('faculties.store'),
+            ]
+
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FacultyRequest $request)
     {
-        //
+
+        // dd($request->validated());
+        Faculty::create(
+            $request->validated(),
+
+        );
+
+        return back()->with('success', 'Fakultas berhasil  ditambah');
     }
 
     /**
@@ -44,15 +72,35 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        //
+        $faculties = Faculty::query()->latest()->paginate(20);
+
+        return view('faculties.index', [
+
+            'faculties' => $faculties,
+
+            'faculty' => $faculty,
+            'page_meta' => [
+                'title' => 'Edit Fakultas',
+                'method' => 'put',
+                'url' => route('faculties.update', $faculty),
+            ]
+
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Faculty $faculty)
+    public function update(FacultyRequest $request, Faculty $faculty)
     {
-        //
+        $faculty->update([
+
+            'name' => $request->name,
+            'color' => $request->color,
+
+        ]);
+
+        return to_route('faculties.index')->with('success',  'fakultas berhasil diubah');
     }
 
     /**
@@ -60,6 +108,8 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        //
+        $faculty->delete();
+
+        return back()->with('success',  'Fak. ' . $faculty->name .' berhasil dihapus');
     }
 }

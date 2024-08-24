@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RuleCategoryRequest;
 use App\Models\RuleCategory;
-use Illuminate\Http\Request;
 
 class RuleCategoryController extends Controller
 {
@@ -12,7 +12,20 @@ class RuleCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $ruleCategories = RuleCategory::query()->latest()->paginate(20);
+
+        return view('rule_categories.index', [
+
+            'rule_categories' => $ruleCategories,
+
+            'rule_category' => new RuleCategory(),
+            'page_meta' => [
+                'title' => 'Kategori Peraturan',
+                'method' => 'post',
+                'url' => route('rule_categories.store'),
+            ]
+
+        ]);
     }
 
     /**
@@ -20,15 +33,29 @@ class RuleCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('member_categories.index', [
+
+            'rule_category' => new RuleCategory(),
+            'page_meta' => [
+                'title' => 'Kategori Peraturan',
+                'method' => 'post',
+                'url' => route('rule_categories.store'),
+            ]
+
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RuleCategoryRequest $request)
     {
-        //
+        RuleCategory::create(
+            $request->validated(),
+
+        );
+
+        return back()->with('success', 'Kategori Peraturan berhasil  ditambah');
     }
 
     /**
@@ -50,7 +77,7 @@ class RuleCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, RuleCategory $ruleCategory)
+    public function update(RuleCategoryRequest $request, RuleCategory $ruleCategory)
     {
         //
     }
@@ -60,6 +87,8 @@ class RuleCategoryController extends Controller
      */
     public function destroy(RuleCategory $ruleCategory)
     {
-        //
+        $ruleCategory->delete();
+
+        return back()->with('success',  $ruleCategory->name .' berhasil dihapus');
     }
 }

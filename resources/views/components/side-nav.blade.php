@@ -28,7 +28,7 @@
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ route('home') }}" class="flex items-center p-2">
-                            <img src=" http://projekuin.test/logo/logorm.png" alt="logorm" class="w-24 mx-auto">
+                            <img src=" {{ url('/') }}/logo/logorm.png" alt="logorm" class="w-24 mx-auto">
                         </a>
                     </li>
                     <li>
@@ -112,7 +112,8 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                        <ul  id="dropdown-sales" class=" py-2 space-y-2 {{ request()->routeIs('members*') ? 'block' : 'hidden' }}">
+                        <ul id="dropdown-sales"
+                            class=" py-2 space-y-2 {{ request()->routeIs('members*') ? 'block' : 'hidden' }}">
                             <li>
                                 <a href="{{ route('members.create') }}"
                                     class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('members.create') ? 'bg-gray-100' : '' }}">Tambah
@@ -132,10 +133,14 @@
                         <button type="button"
                             class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
                             aria-controls="dropdown-pages-peraturan" data-collapse-toggle="dropdown-pages-peraturan">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('rules*') ? 'text-gray-900' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4"/>
-                              </svg>
-                              
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('rules*') ? 'text-gray-900' : '' }}"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1"
+                                    d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
+                            </svg>
+
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Peraturan</span>
                             <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +153,8 @@
                             class="{{ request()->routeIs('rules*') ? 'block' : 'hidden' }} py-2 space-y-2">
                             <li>
                                 <a href="{{ route('rules.create') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('rules.create') ? 'bg-gray-100' : '' }}">Tambah aturan</a>
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('rules.create') ? 'bg-gray-100' : '' }}">Tambah
+                                    aturan</a>
                             </li>
                             <li>
                                 <a href="#"
@@ -162,10 +168,19 @@
                         <button type="button"
                             class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
                             aria-controls="dropdown-pages-galeri" data-collapse-toggle="dropdown-pages-galeri">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('galleries*') ? 'text-gray-900' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            {{-- <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('galleries*') ? 'text-gray-900' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4"/>
-                              </svg>
-                              
+                              </svg> --}}
+
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('galleries*') ? 'text-gray-900' : '' }}"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1"
+                                    d="m3 16 5-7 6 6.5m6.5 2.5L16 13l-4.286 6M14 10h.01M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                            </svg>
+
+
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Galeri</span>
                             <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -178,11 +193,13 @@
                             class="{{ request()->routeIs('galleries*') ? 'block' : 'hidden' }} py-2 space-y-2">
                             <li>
                                 <a href="{{ route('galleries.create') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('galleries.create') ? 'bg-gray-100' : '' }}">Tambah Foto</a>
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('galleries.create') ? 'bg-gray-100' : '' }}">Tambah
+                                    Foto</a>
                             </li>
                             <li>
                                 <a href="{{ route('galleries.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Lihat Foto</a>
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('galleries.index') ? 'bg-gray-100' : '' }}">Lihat
+                                    Foto</a>
                             </li>
                         </ul>
                     </li>
@@ -223,6 +240,46 @@
                             </span>
                         </a>
                     </li>
+
+                    <li>
+                        <button type="button"
+                            class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
+                            aria-controls="dropdown-pages-category" data-collapse-toggle="dropdown-pages-category">
+
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('faculties*') || request()->routeIs('rule_categories*') || request()->routeIs('member_categories*') ? 'text-gray-900' : '' }}"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1"
+                                    d="M15.583 8.445h.01M10.86 19.71l-6.573-6.63a.993.993 0 0 1 0-1.4l7.329-7.394A.98.98 0 0 1 12.31 4l5.734.007A1.968 1.968 0 0 1 20 5.983v5.5a.992.992 0 0 1-.316.727l-7.44 7.5a.974.974 0 0 1-1.384.001Z" />
+                            </svg>
+
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Kategori</span>
+                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <ul id="dropdown-pages-category"
+                            class="{{ request()->routeIs('faculties*') || request()->routeIs('rule_categories*') || request()->routeIs('member_categories*') ? 'block' : 'hidden' }} py-2 space-y-2">
+
+                            <li>
+                                <a href="{{ route('faculties.index') }}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('faculties.index') ? 'bg-gray-100' : '' }}">Fakultas</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('rule_categories.index') }}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('rule_categories.index') ? 'bg-gray-100' : '' }}">Peraturan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('member_categories.index') }}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('member_categories.index') ? 'bg-gray-100' : '' }}">Anggota</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li>
                         <button type="button"
                             class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"

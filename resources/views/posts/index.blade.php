@@ -7,8 +7,9 @@
         </h2>
     </x-slot> --}}
     <x-container class="max-w-screen-xl mx-auto">
-        <section class=" sm:max-w-lg md:max-w-4xl xl:max-w-6xl mx-auto">
-            <div class=" gap-5 sm:columns-2 xl:columns-3 [&>article:not(:first-child)]:mt-5 ">
+        <section class="max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto">
+            <h2 class="text-center sm:text-start uppercase text-lg font-bold text-red-600 mb-5">Semua Berita</h2>
+            <div class=" gap-5 md:columns-2 xl:columns-2 [&>article:not(:first-child)]:mt-5 ">
                 @forelse ($posts as $post)
                     <article
                         class="relative p-0 box-border bg-white overflow-hidden rounded-lg border border-gray-200 shadow-md group">
@@ -22,8 +23,8 @@
                             </span>
 
                             <div class="p-4 bg-gradient-to-t from-slate-800 to-transparent">
-                                <p class="text-gray-300 text-xs  font-semibold group-hover:-translate-y-1 transition ease-in-out duration-300">{{ $post->created_at->format('d m Y') }}</p>
-                                <h2 class="text-white text-base sm:text-lg font-bold group-hover:-translate-y-1 transition ease-in-out duration-300">{{ str()->limit($post->tittle, 70) }}</h2>
+                                <p class="text-gray-300 text-xs  font-semibold group-hover:-translate-y-1 sm:group-hover:-translate-y-3 transition ease-in-out duration-300">{{ $post->created_at->format('d m Y') }}</p>
+                                <h2 class="text-white text-base sm:text-lg font-bold group-hover:-translate-y-1 sm:group-hover:-translate-y-3 transition ease-in-out duration-300">{{ str()->limit($post->tittle, 70) }}</h2>
                             </div>
                         </div>
                     </article>
@@ -49,8 +50,8 @@
             </div>
         </section>
 
-        <section class="md:max-w-4xl xl:max-w-6xl mx-auto mt-20">
-            <h2 class="uppercase text-lg font-bold text-red-600 mb-5">Kategori</h2>
+        <section class="max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto mt-20">
+            <h2 class="text-center sm:text-start uppercase text-lg font-bold text-red-600 mb-5">Kategori</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 @foreach ( $member_categories as $member_category )
                 <a href="#">
@@ -62,36 +63,6 @@
                 @endforeach
             </div>
         </section>
-
-
-        @if (session()->has('success'))
-            <div class="fixed bottom-0 right-1/2 translate-x-1/2">
-                <div id="toast-success"
-                    class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-                    role="alert">
-                    <div
-                        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200 animate-pulse">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                        </svg>
-                        <span class="sr-only">Check icon</span>
-                    </div>
-                    <div class="ms-3 text-sm font-normal">{{ session('success') }}</div>
-                    <button type="button"
-                        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                        data-dismiss-target="#toast-success" aria-label="Close">
-                        <span class="sr-only">Close</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        @endif
 
     </x-container>
 

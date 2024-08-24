@@ -32,54 +32,54 @@ class DatabaseSeeder extends Seeder
 
         // MemberCategory::all()->create();
 
-        User::create([
-            'name' => 'cholil',
-            'email' => 'horsegourmet0@gmail.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
-        ]);
+        // User::create([
+        //     'name' => 'cholil',
+        //     'email' => 'horsegourmet0@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('password'),
+        //     'remember_token' => Str::random(10),
+        // ]);
 
-        MemberCategory::create([
-            'name' => 'Dema U',
-            'slug' => 'dema-u'
-        ]);
+        // MemberCategory::create([
+        //     'name' => 'Dema U',
+        //     'slug' => 'dema-u'
+        // ]);
 
-        MemberCategory::create([
-            'name' => 'Sema U',
-            'slug' => 'sema-u'
-        ]);
+        // MemberCategory::create([
+        //     'name' => 'Sema U',
+        //     'slug' => 'sema-u'
+        // ]);
         
-        MemberCategory::create([
-            'name' => 'Sema Fak Syariah',
-            'slug' => 'sema-f-syariah'
-        ]);
+        // MemberCategory::create([
+        //     'name' => 'Sema Fak Syariah',
+        //     'slug' => 'sema-f-syariah'
+        // ]);
         
-        MemberCategory::create([
-            'name' => 'Dema Fak Syariah',
-            'slug' => 'dema-fak-syariah'
-        ]);
+        // MemberCategory::create([
+        //     'name' => 'Dema Fak Syariah',
+        //     'slug' => 'dema-fak-syariah'
+        // ]);
         
 
-        RuleCategory::create([
-            'name' => 'Dema U',
-            'slug' => 'dema-u'
-        ]);
+        // RuleCategory::create([
+        //     'name' => 'Dema U',
+        //     'slug' => 'dema-u'
+        // ]);
 
-        RuleCategory::create([
-            'name' => 'Sema U',
-            'slug' => 'sema-u'
-        ]);
+        // RuleCategory::create([
+        //     'name' => 'Sema U',
+        //     'slug' => 'sema-u'
+        // ]);
         
-        RuleCategory::create([
-            'name' => 'Sema Fak Syariah',
-            'slug' => 'sema-f-syariah'
-        ]);
+        // RuleCategory::create([
+        //     'name' => 'Sema Fak Syariah',
+        //     'slug' => 'sema-f-syariah'
+        // ]);
 
-        RuleCategory::create([
-            'name' => 'Dema Fak Syariah',
-            'slug' => 'dema-fak-syariah'
-        ]);
+        // RuleCategory::create([
+        //     'name' => 'Dema Fak Syariah',
+        //     'slug' => 'dema-fak-syariah'
+        // ]);
 
 
 

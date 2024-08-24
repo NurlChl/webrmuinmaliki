@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 relative">
 
-    <img src="http://projekuin.test/logo/bg_nav.jpg" alt="bg-nav"
+    <img src="{{ url('/') }}/logo/bg_nav.jpg" alt="bg-nav"
         class="absolute top-0 left-0 w-full h-full object-cover opacity-30">
 
     <!-- Logo -->
@@ -26,7 +26,7 @@
 
 
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:flex" id="nav-utama">
                         <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                             {{ __('Home') }}
                         </x-nav-link>
@@ -123,112 +123,112 @@
 
             {{-- nav fixed ketika scrol bawah --}}
             {{-- <div class="fixed z-50 top-5 left-0 w-full hidden" id="navbar-fixed">
-            <div class="flex justify-between px-10 h-16 max-w-7xl bg-white bg-opacity-85 rounded-xl mx-auto">
-                <div class="flex">
-                    <!-- Logo -->
-                    <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 sm:hidden">
-                        <a href="{{ route('home') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
+                <div class="flex justify-between px-10 h-16 max-w-7xl bg-white bg-opacity-85 rounded-xl mx-auto">
+                    <div class="flex">
+                        <!-- Logo -->
+                        <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 sm:hidden">
+                            <a href="{{ route('home') }}">
+                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            </a>
+                        </div>
+
+
+                        <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:flex">
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Home') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts*')">
+                                {{ __('Postingan') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('members.index')" :active="request()->routeIs('members*')">
+                                {{ __('Anggota') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('rules.index')" :active="request()->routeIs('rules*')">
+                                {{ __('Peraturan') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('aspirations.create')" :active="request()->routeIs('aspirations*')">
+                                {{ __('Aspirasi') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
+                                {{ __('Usulan Peraturan') }}
+                            </x-nav-link>
+                        </div>
                     </div>
 
 
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Home') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts*')">
-                            {{ __('Postingan') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('members.index')" :active="request()->routeIs('members*')">
-                            {{ __('Anggota') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('rules.index')" :active="request()->routeIs('rules*')">
-                            {{ __('Peraturan') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('aspirations.create')" :active="request()->routeIs('aspirations*')">
-                            {{ __('Aspirasi') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
-                            {{ __('Usulan Peraturan') }}
-                        </x-nav-link>
-                    </div>
-                </div>
+                    @auth
+                        <!-- Settings Dropdown -->
+                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button
+                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                        <div>{{ Auth::user()->name }}</div>
 
+                                        <div class="ms-1">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </x-slot>
 
-                @auth
-                    <!-- Settings Dropdown -->
-                    <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        <x-dropdown align="right" width="48">
-                            <x-slot name="trigger">
-                                <button
-                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                    <div>{{ Auth::user()->name }}</div>
-
-                                    <div class="ms-1">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <x-dropdown-link :href="route('dashboard')">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('Profile') }}
-                                </x-dropdown-link>
-
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-
-                                    <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                <x-slot name="content">
+                                    <x-dropdown-link :href="route('dashboard')">
+                                        {{ __('Dashboard') }}
                                     </x-dropdown-link>
-                                </form>
-                            </x-slot>
-                        </x-dropdown>
+                                    <x-dropdown-link :href="route('profile.edit')">
+                                        {{ __('Profile') }}
+                                    </x-dropdown-link>
+
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <x-dropdown-link :href="route('logout')"
+                                            onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown>
+                        </div>
+                    @else
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('login')">
+                                {{ __('Login') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('register')">
+                                {{ __('Register') }}
+                            </x-nav-link>
+                        </div>
+                    @endauth
+
+                    <!-- Hamburger -->
+                    <div class="-me-2 flex items-center sm:hidden">
+
+
+                        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
+                            aria-controls="default-sidebar" type="button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                            <span class="sr-only">Open sidebar</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" fill-rule="evenodd"
+                                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+                                </path>
+                            </svg>
+                        </button>
+
+
                     </div>
-                @else
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('login')">
-                            {{ __('Login') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('register')">
-                            {{ __('Register') }}
-                        </x-nav-link>
-                    </div>
-                @endauth
-
-                <!-- Hamburger -->
-                <div class="-me-2 flex items-center sm:hidden">
-
-
-                    <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
-                        aria-controls="default-sidebar" type="button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                        <span class="sr-only">Open sidebar</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" fill-rule="evenodd"
-                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                            </path>
-                        </svg>
-                    </button>
-
-
                 </div>
-            </div>
-        </div> --}}
+            </div> --}}
 
 
         </div>
@@ -295,7 +295,8 @@
                         <svg class="w-6 h-6 text-gray-400 dark:text-white group-hover:text-gray-900 {{ request()->routeIs('home') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
 
@@ -308,7 +309,8 @@
                         <svg class="w-6 h-6 text-gray-400 dark:text-white group-hover:text-gray-900 {{ request()->routeIs('dashboard') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
                                 d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
                         </svg>
 
@@ -321,7 +323,8 @@
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('posts*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
                                 d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
                         </svg>
 
@@ -495,29 +498,30 @@
     </aside>
 
 
-    {{-- <script>
-        window.onscroll = function() {
-            makeNavbarFixed();
-        };
+    <script>
+        let isNavbarFixed = false;
 
-        function makeNavbarFixed() {
-            const navbarFixed = document.querySelector('#navbar-fixed');
-            const navbar = document.querySelector('#navbar');
-            const logo = document.querySelector('#logo');
-            const scrollPosition = window.scrollY;
+window.onscroll = function() {
+    makeNavbarFixed();
+};
 
-            // Cek jika posisi scroll lebih dari 100px
-            if (scrollPosition > 150) {
-                navbarFixed.classList.remove('hidden');
-                navbar.classList.add('hidden');
-                logo.classList.add('hidden');
-            } else {
-                navbarFixed.classList.add('hidden');
-                navbar.classList.remove('hidden');
-                logo.classList.remove('hidden');
-            }
-        }
-    </script> --}}
+function makeNavbarFixed() {
+    const navbarFixed = document.querySelector('#navbar-fixed');
+    const navbar = document.querySelector('#navbar');
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition > 150 && !isNavbarFixed) {
+        navbarFixed.classList.remove('hidden');
+        navbar.classList.add('hidden');
+        isNavbarFixed = true;
+    } else if (scrollPosition <= 150 && isNavbarFixed) {
+        navbar.classList.remove('hidden');
+        navbarFixed.classList.add('hidden');
+        isNavbarFixed = false;
+    }
+}
+
+    </script>
 
     {{-- </div> --}}
 </nav>

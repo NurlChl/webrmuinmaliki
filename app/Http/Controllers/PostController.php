@@ -8,7 +8,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller 
+class PostController extends Controller
 {
 
 
@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         $posts = Post::query()->latest()->paginate(20);
         $memberCategory = MemberCategory::all();
-        
+
         return view('posts.index', [
             'posts' => $posts,
             'member_categories' => $memberCategory,
@@ -59,12 +59,11 @@ class PostController extends Controller
         $request->user()->posts()->create([
 
             ...$request->validated(),
-            
+
             ...['image' => $file->store('images/posts')],
         ]);
 
         return to_route('posts.index')->with('success', 'Postingan berhasil ditambah');
-
     }
 
     /**
@@ -72,11 +71,17 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        
+        $sessionKey = 'post_' . $post->slug . '_viewed';
+
+        if (!session()->has($sessionKey)) {
+            $post->increment('views');
+            session()->put($sessionKey, true); // Set session untuk mencegah penambahan views pada refresh
+        }
+
         return view('posts.show', [
             'post' => $post,
+            
         ]);
-
     }
 
     /**
@@ -88,6 +93,7 @@ class PostController extends Controller
         Gate::authorize('update', $post);
 
         return view('posts.form', [
+
             
             'post' => $post,
             'member_categories' => MemberCategory::all(),
@@ -111,11 +117,9 @@ class PostController extends Controller
             Storage::delete($post->image);
 
             $file = $request->file('image')->store('image/posts');
-
         } else {
 
             $file = $post->image;
-
         }
 
         $post->update([

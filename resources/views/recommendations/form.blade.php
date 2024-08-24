@@ -110,7 +110,7 @@
             </div>
         </section>
 
-        <div class="h-6 w-6 rounded-full bg-black fixed top-0 left-0 pointer-events-none z-50 hidden md:block" id="circle"></div>
+        {{-- <div class="h-6 w-6 rounded-full bg-black fixed top-0 left-0 pointer-events-none z-50 hidden md:block" id="circle"></div>
         <div class="h-6 w-6 rounded-full bg-black fixed top-0 left-0 pointer-events-none z-50 hidden md:block" id="circle"></div>
         <div class="h-6 w-6 rounded-full bg-black fixed top-0 left-0 pointer-events-none z-50 hidden md:block" id="circle"></div>
         <div class="h-6 w-6 rounded-full bg-black fixed top-0 left-0 pointer-events-none z-50 hidden md:block" id="circle"></div>
@@ -177,7 +177,7 @@
             }
 
             animateCircles();
-        </script>
+        </script> --}}
 
         <script>
             function updateFileName(input) {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Post;
-use App\Models\Rule;
 use App\Models\RuleCategory;
 use Illuminate\Http\Request;
 
@@ -17,6 +17,7 @@ class HomeController extends Controller
 
         $carousels = Post::query()->latest()->limit(5)->get();
         $posts = Post::query()->latest()->limit(10)->get();
+        $galleries = Gallery::query()->latest()->limit(10)->get();
 
         $ruleCategories = RuleCategory::with(['rules' => function ($query) {
             $query->latest()->limit(3);
@@ -37,6 +38,9 @@ class HomeController extends Controller
             'posts' => $posts,
             'carousels' => $carousels,
             'rulesByCategory' => $rulesByCategory,
+            'galleries' => $galleries,
+            'totalGalleries' => $galleries->count(),
+
         ]);
     }
 }

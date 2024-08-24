@@ -114,8 +114,8 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        // $gallery->delete();
-        dd($gallery);
+        $gallery->delete();
+        // dd($gallery);
 
         return to_route('galleries.index')->with('success',  ' Foto berhasil dihapus');
     }

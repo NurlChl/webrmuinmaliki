@@ -6,11 +6,14 @@
             {{ __('posts > create') }}
         </h2>
     </x-slot> --}}
-    <x-form-container class="relative bg-zinc-200 bg-fixed bg-cover" style="background-image: url('http://projekuin.test/logo/unsplashbg2.jpg')">
+    <x-form-container class="relative bg-zinc-200 bg-fixed bg-cover"
+        style="background-image: url('http://projekuin.test/logo/unsplashbg2.jpg')">
         <canvas id="canvas" class="opacity-60 absolute left-0 top-0 w-full h-full z-0"></canvas>
 
         <section class="relative bg-white md:w-fit mx-auto p-5 sm:p-5 z-10 md:bg-opacity-50 mb-20 shadow-2xl">
-            <div class="absolute top-1/2 left-1/2 w-5/6 h-5/6 transform -translate-x-1/2  -translate-y-1/2 bg-zinc-50 bg-gradient-to-br from-zinc-50 to-zinc-300 opacity-0 md:opacity-40 blur-lg"></div>
+            <div
+                class="absolute top-1/2 left-1/2 w-5/6 h-5/6 transform -translate-x-1/2  -translate-y-1/2 bg-zinc-50 bg-gradient-to-br from-zinc-50 to-zinc-300 opacity-0 md:opacity-40 blur-lg">
+            </div>
             {{-- <div class="absolute top-0 left-0 w-full h-full bg-white "></div> --}}
             <div class="py-8 px-0 sm:px-4 max-w-screen-md lg:py-10 mx-auto relative z-10">
                 <h2 class="mb-10 text-xl sm:text-3xl font-bold text-gray-900 dark:text-white">{{ $page_meta['title'] }}
@@ -131,9 +134,7 @@
                         class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-emerald-700 rounded-lg focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900 hover:bg-emerald-800">
                         Simpan
                     </button>
-            </div>
-            </div>
-            </form>
+                </form>
             </div>
         </section>
 

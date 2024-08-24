@@ -3,7 +3,7 @@
     @slot('tittle', 'Anggota')
 
     <section class="relative py-20 sm:py-40 lg:py-52 bg-no-repeat bg-cover bg-center bg-pink-200"
-        style="background-image: url('http://projekuin.test/logo/aspirasi.jpg')">
+        style="background-image: url('{{ url('/') }}/logo/aspirasi.jpg')">
         {{-- <img src="http://projekuin.test/logo/uin.jpeg" alt="uin" class="object-cover w-full "> --}}
 
         <div class="absolute  md:inset-32 bg-zinc-900 opacity-10 md:opacity-35"></div>

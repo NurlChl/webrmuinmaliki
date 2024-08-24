@@ -40,7 +40,7 @@
         @import url('https://fonts.cdnfonts.com/css/poppins');
 
         .custom3d-slide {
-            background-color: #D2D2D2;
+            background-color: #d2d2d2;
             background-image:
                 repeating-linear-gradient(to right, transparent 0 100px,
                     #25283b22 100px 101px),
@@ -163,6 +163,7 @@
         }
 
         @media screen and (max-width: 1023px) {
+
             .banner .slider {
                 width: 160px;
                 height: 200px;
@@ -172,6 +173,10 @@
             .banner .slider .item {
                 transform:
                     rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+            }
+
+            .banner .content {
+                padding-bottom: 50px;
             }
 
             .banner .content h1 {
@@ -194,6 +199,11 @@
         }
 
         @media screen and (max-width: 767px) {
+
+            .banner {
+                height: 50vh;
+            }
+
             .banner .slider {
                 width: 100px;
                 height: 150px;
@@ -202,18 +212,36 @@
 
             .banner .slider .item {
                 transform:
-                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(200px);
             }
 
             .banner .content h1 {
                 font-size: 4em;
             }
         }
+
+        @media screen and (max-width: 425px) {
+
+            .banner {
+                height: 40vh;
+            }
+
+            .banner .slider {
+                width: 80px;
+                height: 120px;
+                left: calc(50% - 50px);
+            }
+
+            .banner .slider .item {
+                transform:
+                    rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(140px);
+            }
+        }
     </style>
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased selection:bg-emerald-500 selection:text-white">
     <div class="min-h-screen bg-gray-100">
         @if ($rute)
             @include('layouts.navigation')
@@ -232,6 +260,35 @@
         <main>
             {{ $slot }}
         </main>
+
+        @if (session()->has('success'))
+            <div class="fixed bottom-0 right-1/2 translate-x-1/2 z-50">
+                <div id="toast-success"
+                    class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                    role="alert">
+                    <div
+                        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200 animate-pulse">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                        </svg>
+                        <span class="sr-only">Check icon</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ session('success') }}</div>
+                    <button type="button"
+                        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                        data-dismiss-target="#toast-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        @endif
 
         @include('layouts.footer')
     </div>

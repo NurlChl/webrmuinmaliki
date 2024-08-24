@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[ObservedBy(PostObserver::class)]
 
@@ -23,6 +23,7 @@ class Post extends Model
         'image',
         'excerpt',
         'body',
+        // 'views',
     ];
 
     public function user (): BelongsTo
@@ -33,5 +34,10 @@ class Post extends Model
     public function member_category (): BelongsTo
     {
         return $this->belongsTo(MemberCategory::class);
+    }
+
+    public function comments (): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }
