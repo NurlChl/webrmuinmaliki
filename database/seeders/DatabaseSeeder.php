@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
     //     User::factory(5)->create(),
     //    ])->create();
 
-        // Post::factory(10)->create();
-        // User::factory(5)->create();
+    //     Post::factory(10)->create();
+    //     User::factory(5)->create();
 
-        // MemberCategory::all()->create();
+    //     MemberCategory::all()->create();
 
         // User::create([
         //     'name' => 'cholil',
@@ -83,49 +83,53 @@ class DatabaseSeeder extends Seeder
 
 
 
-        Faculty::create([
-            'name' => 'Saintek',
-            'slug' => 'saintek',
-            'color' => 'blue',
-        ]);
+        // Faculty::create([
+        //     'name' => 'Saintek',
+        //     'slug' => 'saintek',
+        //     'color' => 'blue',
+        // ]);
 
-        Faculty::create([
-            'name' => 'Psikologi',
-            'slug' => 'psikologi',
-            'color' => 'green',
-        ]);
+        // Faculty::create([
+        //     'name' => 'Psikologi',
+        //     'slug' => 'psikologi',
+        //     'color' => 'green',
+        // ]);
 
-        Faculty::create([
-            'name' => 'Syariah',
-            'slug' => 'syariah',
-            'color' => 'yellow',
-        ]);
+        // Faculty::create([
+        //     'name' => 'Syariah',
+        //     'slug' => 'syariah',
+        //     'color' => 'yellow',
+        // ]);
 
-        Faculty::create([
-            'name' => 'Tarbiyah',
-            'slug' => 'tarbiyah',
-            'color' => 'purple'
-        ]);
-
-
-        AspirationType::create([
-            'name' => 'Komplain',
-            'slug' => 'komplain',
-        ]);
-
-        AspirationType::create([
-            'name' => 'Aspirasi',
-            'slug' => 'aspirasi',
-        ]);
-
-        AspirationType::create([
-            'name' => 'Pengajuan Informasi',
-            'slug' => 'pengajuan-informasi',
-        ]);
+        // Faculty::create([
+        //     'name' => 'Tarbiyah',
+        //     'slug' => 'tarbiyah',
+        //     'color' => 'purple'
+        // ]);
 
 
+        // AspirationType::create([
+        //     'name' => 'Komplain',
+        //     'slug' => 'komplain',
+        // ]);
+
+        // AspirationType::create([
+        //     'name' => 'Aspirasi',
+        //     'slug' => 'aspirasi',
+        // ]);
+
+        // AspirationType::create([
+        //     'name' => 'Pengajuan Informasi',
+        //     'slug' => 'pengajuan-informasi',
+        // ]);
+
+
+        // $this->call([
+        //     RoleSeeder::class,
+        // ]);
         
-        
+
+        Post::factory(10)->create();
 
     }
 

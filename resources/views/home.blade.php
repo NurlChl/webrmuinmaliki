@@ -248,31 +248,33 @@
             </section>
         </div>
 
-        <div class="custom3d-slide mt-20 rounded-lg">
+        @if ($totalGalleries > 0)
+            <div class="custom3d-slide mt-20 rounded-lg">
 
-            <div class="banner h-fit">
-                <div class="slider" style="--quantity: {{ $totalGalleries }}">
-                    @foreach ($galleries as $gallery)
-                        <div class="item" style="--position: {{ $loop->iteration }}"><img
-                                src="{{ $gallery->image }}" alt="slide"></div>
-                    @endforeach
-                </div>
-                <div class="content">
-                    <h1 data-content="KEGIATAN" class="hidden md:block">
-                        KEGIATAN
-                    </h1>
-                    <div class="author hidden md:block">
-                        <h2>RM</h2>
-                        <p><b>UIN Maliki</b></p>
-                        <p>
-                            Beberapa kegiatan dalam organisasi
-                        </p>
+                <div class="banner h-fit">
+                    <div class="slider" style="--quantity: {{ $totalGalleries }}">
+                        @foreach ($galleries as $gallery)
+                            <div class="item" style="--position: {{ $loop->iteration }}"><img
+                                    src="{{ $gallery->image }}" alt="slide"></div>
+                        @endforeach
                     </div>
-                    <div class="model"></div>
+                    <div class="content">
+                        <h1 data-content="KEGIATAN" class="hidden md:block">
+                            KEGIATAN
+                        </h1>
+                        <div class="author hidden md:block">
+                            <h2>RM</h2>
+                            <p><b>UIN Maliki</b></p>
+                            <p>
+                                Beberapa kegiatan dalam organisasi
+                            </p>
+                        </div>
+                        <div class="model"></div>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        @endif
 
     </x-container>
 </x-app-layout>

@@ -70,9 +70,12 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('dashboard')">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
+                                @if (auth()->user()->isAdmin())
+                                    <x-dropdown-link :href="route('dashboard')">
+                                        {{ __('Dashboard') }}
+                                    </x-dropdown-link>
+                                @endif
+
                                 <x-dropdown-link :href="route('profile.edit')">
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
@@ -83,7 +86,7 @@
 
                                     <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                            this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -295,8 +298,7 @@
                         <svg class="w-6 h-6 text-gray-400 dark:text-white group-hover:text-gray-900 {{ request()->routeIs('home') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
 
@@ -309,8 +311,7 @@
                         <svg class="w-6 h-6 text-gray-400 dark:text-white group-hover:text-gray-900 {{ request()->routeIs('dashboard') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                 d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
                         </svg>
 
@@ -323,8 +324,7 @@
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('posts*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                 d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
                         </svg>
 
@@ -501,26 +501,25 @@
     <script>
         let isNavbarFixed = false;
 
-window.onscroll = function() {
-    makeNavbarFixed();
-};
+        window.onscroll = function() {
+            makeNavbarFixed();
+        };
 
-function makeNavbarFixed() {
-    const navbarFixed = document.querySelector('#navbar-fixed');
-    const navbar = document.querySelector('#navbar');
-    const scrollPosition = window.scrollY;
+        function makeNavbarFixed() {
+            const navbarFixed = document.querySelector('#navbar-fixed');
+            const navbar = document.querySelector('#navbar');
+            const scrollPosition = window.scrollY;
 
-    if (scrollPosition > 150 && !isNavbarFixed) {
-        navbarFixed.classList.remove('hidden');
-        navbar.classList.add('hidden');
-        isNavbarFixed = true;
-    } else if (scrollPosition <= 150 && isNavbarFixed) {
-        navbar.classList.remove('hidden');
-        navbarFixed.classList.add('hidden');
-        isNavbarFixed = false;
-    }
-}
-
+            if (scrollPosition > 150 && !isNavbarFixed) {
+                navbarFixed.classList.remove('hidden');
+                navbar.classList.add('hidden');
+                isNavbarFixed = true;
+            } else if (scrollPosition <= 150 && isNavbarFixed) {
+                navbar.classList.remove('hidden');
+                navbarFixed.classList.add('hidden');
+                isNavbarFixed = false;
+            }
+        }
     </script>
 
     {{-- </div> --}}

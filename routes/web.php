@@ -13,11 +13,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\RuleCategoryController;
 use App\Http\Controllers\RuleController;
+use App\Http\Middleware\HasRoleAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home');
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('members', [MemberController::class, 'index'])->name('members.index');
@@ -29,24 +30,26 @@ Route::resource('comments', CommentController::class)->only(['store', 'destroy']
 
 
 Route::middleware('auth')->group(function () {
-    
+
     Route::middleware('verified')->group(function () {
-        
-        Route::resource('posts', PostController::class)->except(['index', 'show']);
-        Route::resource('members', MemberController::class)->except(['index', 'show']);
-        Route::resource('rules', RuleController::class)->except(['index', 'show']);
-        Route::resource('galleries', GalleryController::class)->except(['index', 'show']);
-        Route::resource('faculties', FacultyController::class)->except(['show']);
-        Route::resource('member_categories', MemberCategoryController::class)->except(['show']);
-        Route::resource('rule_categories', RuleCategoryController::class)->except(['show']);
 
-        
-        Route::get('aspirations', [AspirationController::class, 'index'])->name('aspirations.index');
-        Route::get('recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');
-        Route::get('galleries', [GalleryController::class, 'index'])->name('galleries.index');
+        Route::middleware(HasRoleAdminMiddleware::class)->group(function () {
+            Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
+            Route::resource('posts', PostController::class)->except(['index', 'show']);
+            Route::resource('members', MemberController::class)->except(['index', 'show']);
+            Route::resource('rules', RuleController::class)->except(['index', 'show']);
+            Route::resource('galleries', GalleryController::class)->except(['index', 'show']);
+            Route::resource('faculties', FacultyController::class)->except(['show']);
+            Route::resource('member_categories', MemberCategoryController::class)->except(['show']);
+            Route::resource('rule_categories', RuleCategoryController::class)->except(['show']);
 
+            Route::get('aspirations', [AspirationController::class, 'index'])->name('aspirations.index');
+            Route::get('recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');
+            Route::get('galleries', [GalleryController::class, 'index'])->name('galleries.index');
+        });
     });
+
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -63,6 +66,6 @@ Route::get('members?category={category:slug}', [MemberController::class, 'catego
 Route::get('aspirations/{aspiration:nim}', [AspirationController::class, 'show'])->name('aspirations.show');
 Route::get('recommendations/{aspiration:nim}', [RecommendationController::class, 'show'])->name('recommendations.show');
 
- 
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';

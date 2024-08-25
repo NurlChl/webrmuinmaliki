@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-    // use HasRoles;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -48,10 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function posts (): HasMany
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-  
+   
 }
