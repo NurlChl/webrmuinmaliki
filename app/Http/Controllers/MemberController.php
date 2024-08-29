@@ -23,6 +23,7 @@ class MemberController extends Controller
         return view('members.index', [
             'member_categories' => MemberCategory::all(),
             'members' => $members,
+            'selected' => Member::where('member_category_id', $category->id),
         ]);
     }
 

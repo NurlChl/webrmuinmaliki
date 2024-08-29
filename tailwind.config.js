@@ -12,6 +12,9 @@ export default {
     ],
 
     theme: {
+        colors: {
+            'cobacolor': '#e8d29f',
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

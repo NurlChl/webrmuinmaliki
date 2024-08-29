@@ -9,8 +9,9 @@
         <div class="absolute  md:inset-32 bg-zinc-900 opacity-10 md:opacity-35"></div>
 
         <div class="relative ">
-            <h1 class="text-white text-1xl sm:text-3xl lg:text-6xl font-bold text-center ">Anggota</h1>
-            <h1 class="text-white text-2xl sm:text-4xl lg:text-7xl font-bold text-center ">RM UIN MALIKI</h1>
+            <h1 class="text-white text-1xl sm:text-3xl lg:text-4xl font-bold text-center ">ANGGOTA</h1>
+            <h1 class="text-white text-2xl sm:text-4xl lg:text-4xl font-bold text-center ">REPUBLIK MAHASISWA UIN MALIKI
+            </h1>
         </div>
     </section>
 
@@ -19,13 +20,14 @@
         <div class="mx-auto max-w-screen-xl lg:px-12 mt-10">
             <!-- Start coding here -->
             <div class="bg-white pt-5 relative shadow-md sm:rounded-lg overflow-hidden ">
-                <div class="flex flex-col md:flex-row items-end justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 mb-10">
+                <div
+                    class="flex flex-col md:flex-row items-end justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 mb-10">
                     <div class="w-full md:w-1/2">
                         <form class="flex items-center">
                             @if (request('category'))
                                 <input type="hidden" name="category" value="{{ request('category') }}">
                             @endif
-                            <label for="simple-search" class="sr-only">Search</label>
+                            <label for="simple-search" class="sr-only">Cari</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -37,7 +39,7 @@
                                 </div>
                                 <input type="search" id="simple-search" name="search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full pl-10 p-2"
-                                    placeholder="Search">
+                                    placeholder="Cari...">
                             </div>
                         </form>
                     </div>
@@ -103,15 +105,15 @@
                             </div>
                         </div> --}}
 
-
                     <button id="multiLevelDropdownButton" data-dropdown-toggle="multi-dropdown"
                         class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-                        type="button">Kategori <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                        type="button">Kategori<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
+
 
                     <!-- Dropdown menu -->
                     <div id="multi-dropdown"
@@ -193,7 +195,8 @@
                                             </ul>
                                             <div class="py-1">
                                                 <form onsubmit="return confirm('Yakin hapus anggota ini?')"
-                                                    action="{{ route('members.destroy', $member->id) }}" method="POST"
+                                                    action="{{ route('members.destroy', $member->id) }}"
+                                                    method="POST"
                                                     class="block text-sm text-gray-700 hover:bg-gray-100 ">
 
                                                     @method('DELETE')

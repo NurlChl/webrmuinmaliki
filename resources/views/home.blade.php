@@ -12,9 +12,9 @@
 
         <div class="absolute  md:inset-32 bg-zinc-900 opacity-10 md:opacity-35"></div>
 
-        <div class="relative ">
-            <h1 class="text-white text-1xl sm:text-3xl lg:text-6xl font-bold text-center ">Selamat Datang</h1>
-            <h1 class="text-white text-2xl sm:text-4xl lg:text-7xl font-bold text-center ">Di Website RM UIN MALIKI</h1>
+        <div class="relative">
+            <h1 class="text-white text-1xl sm:text-3xl lg:text-4xl font-bold text-center ">SELAMAT DATANG</h1>
+            <h1 class="text-white text-2xl sm:text-4xl lg:text-4xl font-bold text-center ">DI REPUBLIK MAHASISWA UIN MALIKI</h1>
         </div>
     </section>
     <x-container class="flex flex-col mx-auto max-w-3xl lg:w-full lg:max-w-7xl mt-7 sm:mt-10 bg-white">
@@ -248,7 +248,7 @@
             </section>
         </div>
 
-        @if ($totalGalleries > 0)
+        @if ($totalGalleries > 2)
             <div class="custom3d-slide mt-20 rounded-lg">
 
                 <div class="banner h-fit">
