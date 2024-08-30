@@ -27,4 +27,17 @@ class GalleryRequest extends FormRequest
             'description' => ['required', 'string','min:3'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'image.required' => 'Gambar tidak boleh kosong.',
+            'image.mimes' => 'Gambar harus jpg, jpeg, png, svg.',
+            'image.max' => 'Gambar maksimal 5 mb.',
+            
+            'description.required' => 'Deskripsi tidak boleh kosong.',
+            'description.min' => 'Deskripsi minimal 3 karakter.',
+
+        ];
+    }
 }

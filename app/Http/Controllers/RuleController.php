@@ -20,6 +20,13 @@ class RuleController extends Controller
      */
     public function index()
     {   
+
+        $requestCategory = request('category');
+        $selectedCategory = $requestCategory ? RuleCategory::where('slug', $requestCategory)->first()->name : null;
+
+        $requestPeriod = request('period');
+        $selectedPeriod = $requestPeriod ?? null;
+
         $rules = Rule::query()
                     ->with('ruleCategory', fn ($query) => $query->select(['id', 'name']))
                     ->filterRule(request()->only(['search', 'category',]))
@@ -30,6 +37,10 @@ class RuleController extends Controller
         return view('rules.index', [
             'rule_categories' => RuleCategory::all(),
             'rules' => $rules,
+
+            'selectedCategory' => $selectedCategory,
+            'selectedPeriod' => $selectedPeriod,
+
         ]);
     }
 

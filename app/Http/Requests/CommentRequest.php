@@ -27,4 +27,18 @@ class CommentRequest extends FormRequest
             'body' => ['required', 'string', 'min:3', 'max:1000'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'name.min' => 'Nama minimal 2 karakter.',
+            'name.max' => 'Nama melebihi batas maksimal.',
+            
+            'body.required' => 'Komentar tidak boleh kosong.',
+            'body.min' => 'Komentar minimal 3 karakter.',
+            'body.max' => 'Komentar melebihi batas maksimal.',
+
+        ];
+    }
 }

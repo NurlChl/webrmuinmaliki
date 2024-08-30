@@ -18,11 +18,14 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::query()->latest()->paginate(20);
+        $postsPopuler = Post::query()->orderBy('views', 'desc')->limit(10)->get();
         $memberCategory = MemberCategory::all();
 
         return view('posts.index', [
             'posts' => $posts,
             'member_categories' => $memberCategory,
+            'posts_populer' => $postsPopuler,
+
         ]);
     }
 

@@ -9,8 +9,16 @@ class PostObserver
 {
     public function creating(Post $post): void
     {
+        $originalSlug = str()->slug($post->tittle);
+        $slug = $originalSlug;
+        $count = 1;
 
-        $post->slug = str()->slug($post->tittle);
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $post->slug = $slug;
         $post->excerpt = Str::limit(strip_tags($post->body), 500);
         
     }
@@ -18,7 +26,16 @@ class PostObserver
     public function updating(Post $post): void
     {
         
-        $post->slug = str()->slug($post->tittle);
+        $originalSlug = str()->slug($post->tittle);
+        $slug = $originalSlug;
+        $count = 1;
+
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $post->slug = $slug;
         $post->excerpt = Str::limit(strip_tags($post->body), 500);
     }
 

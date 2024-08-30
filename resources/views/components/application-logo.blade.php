@@ -5,8 +5,8 @@
 
 
 <div class="flex gap-2 content-center pt-2">
-    <img src="http://projekuin.test/logo/logorm.png" alt="logorm" class="w-12 sm:w-24" {{ $attributes }}>
-    <div class="content-center hidden sm:block">
+    <img src="http://projekuin.test/logo/logorm.png" alt="logorm" class="w-12 lg:w-24" {{ $attributes }}>
+    <div class="content-center hidden lg:block">
         <p class="font-bold text-xl text-green-700 uppercase">Republik Mahasiswa</p>
         <p class="font-bold text-xl text-green-700 uppercase">UIN Maliki</p>
         {{-- <p class="font-normal text-xs bg-green-700 py-1 rounded-full text-center text-white">UIN Maliki</p> --}}

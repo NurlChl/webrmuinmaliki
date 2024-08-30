@@ -25,4 +25,14 @@ class MemberCategoryRequest extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:255'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama Kategori fakultas tidak boleh kosong.',
+            'name.min' => 'Nama Kategori fakultas minimal 2 karakter.',
+            'name.max' => 'Nama Kategori fakultas melebihi batas maksimal.',
+
+        ];
+    }
 }

@@ -33,4 +33,23 @@ class RuleRequest extends FormRequest
             'rule_category_id' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'name.min' => 'Nama minimal 3 karakter.',
+            'name.max' => 'Nama melebihi batas maksimal.',
+
+            'perios.required' => 'Tahun tidak boleh kosong.',
+            'perios.integer' => 'Tahun harus angka.',
+            
+            'file.required' => 'File wajib diisi.',
+            'file.file' => 'File tidak valid.',
+            'file.max' => 'File maksimal 2 mb.',
+
+            'rule_category_id.required' => 'Kategori tidak boleh kosong.',
+            
+        ];
+    }
 }

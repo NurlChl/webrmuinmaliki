@@ -11,19 +11,28 @@ class MemberController extends Controller
 {
 
 
-    public function category(MemberCategory $category)
-    {
-        // dd($category);
+    // public function category(MemberCategory $category)
+    // {
+    //     // dd($category);
 
-        $members = Member::where('member_category_id', $category->id)
-                        ->with('memberCategory:id,name') 
-                        ->latest()
-                        ->paginate(10);
+    //     $members = Member::where('member_category_id', $category->id)
+    //                     ->with('memberCategory:id,name') 
+    //                     ->latest()
+    //                     ->paginate(10);
+    //     $selectedCategory = $category->name;
 
-        return view('members.index', [
+    //     return view('members.index', [
+    //         'member_categories' => MemberCategory::all(),
+    //         'members' => $members,
+    //         'selectedCategory' => $selectedCategory,
+    //     ]);
+    // }
+
+    public function navMember() {
+
+        return view('layouts.navigation', [
             'member_categories' => MemberCategory::all(),
-            'members' => $members,
-            'selected' => Member::where('member_category_id', $category->id),
+            
         ]);
     }
 
@@ -33,21 +42,21 @@ class MemberController extends Controller
      */
     public function index()
     {
-
-        
+        $requestCategory = request('category');
+        $selectedCategory = $requestCategory ? MemberCategory::where('slug', $requestCategory)->first()->name : null;
 
         $members = Member::query()
-                ->with('memberCategory', fn ($query) => $query->select(['id', 'name']))
-                ->filter(request(['search', 'category']))
-                ->latest()
-                ->paginate(10);
+            ->with('memberCategory', fn($query) => $query->select(['id', 'name']))
+            ->filter(request(['search', 'category']))
+            ->latest()
+            ->paginate(10);
 
 
         return view('members.index', [
-            
+
             'member_categories' => MemberCategory::all(),
             'members' => $members,
-
+            'selectedCategory' => $selectedCategory,
         ]);
     }
 
@@ -126,11 +135,9 @@ class MemberController extends Controller
             Storage::delete($member->image);
 
             $file = $request->file('image')->store('image/posts');
-
         } else {
 
             $file = $member->image;
-
         }
 
         $member->update([
@@ -144,7 +151,7 @@ class MemberController extends Controller
 
         ]);
 
-        return to_route('members.index')->with('success',  $request->name. ' : berhasil diubah');
+        return to_route('members.index')->with('success',  $request->name . ' : berhasil diubah');
     }
 
     /**

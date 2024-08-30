@@ -1,11 +1,7 @@
 <x-app-layout>
 
     @slot('tittle', $page_meta['title'])
-    {{-- <x-slot name="header">
-        <h2 class="font-normal text-sm text-gray-500 leading-tight">
-            {{ __('posts > create') }}
-        </h2>
-    </x-slot> --}}
+   
     <x-side-nav>
         <section class="bg-white dark:bg-gray-900 w-full p-5">
             <div class="py-8 px-0 sm:px-4 max-w-screen-md lg:py-10 ">
@@ -93,6 +89,16 @@
 
 
     <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const fileInput = document.getElementById('image');
+            const fileSize = fileInput.files[0].size / 1024 / 1024; // ukuran dalam MB
+
+            if (fileSize > 2) { // batasan 2MB
+                alert('Gambar maksimal 2 MB');
+                event.preventDefault();
+            }
+        });
+
         function updateFileName() {
             const input = document.getElementById('image');
             const label = document.getElementById('upload-label');

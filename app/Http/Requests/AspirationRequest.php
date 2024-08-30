@@ -45,6 +45,14 @@ class AspirationRequest extends FormRequest
             'nim.min' => 'NIM minimal 10 karakter',
 
             'address.required' => 'Alamat tidak boleh kosong',
+            'address.min' => 'Alamat minimal 2 karakter',
+            'address.min' => 'Alamat melebihin batas maksimal',
+            
+            'telephone.required' => 'Telepon wajib diisi',
+
+            'faculty.required' => 'Fakultas wajib diisi',
+            
+            'body.required' => 'Aspirasi wajib diisi',
 
         ];
     }
