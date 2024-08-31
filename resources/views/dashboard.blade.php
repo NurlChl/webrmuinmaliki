@@ -10,7 +10,7 @@
     
     <x-side-nav>
         <section class="bg-white dark:bg-gray-900">
-            <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div class="px-4 mx-auto max-w-screen-xl py-16 lg:px-6">
                 <div class="max-w-screen-md">
                     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Ini adalah bagian Dashboard untuk mengakses fitur sebagai Admin</h2>
                     <p class="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, distinctio quod sit eos quas quasi autem iure illum dolorum ducimus consequatur consequuntur voluptate perspiciatis ullam fugit alias velit asperiores assumenda perferendis et culpa delectus labore, quaerat omnis. Dolores similique voluptatem corrupti iusto ipsum consequatur quasi explicabo magni temporibus commodi? Aperiam!</p>

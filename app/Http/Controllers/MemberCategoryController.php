@@ -71,7 +71,20 @@ class MemberCategoryController extends Controller
      */
     public function edit(MemberCategory $memberCategory)
     {
-        //
+        $memberCategories = MemberCategory::query()->latest()->paginate(20);
+
+        return view('member_categories.index', [
+
+            '$member_categories' => $memberCategories,
+
+            'member_category' => $memberCategory,
+            'page_meta' => [
+                'title' => 'Edit Kategori Anggota',
+                'method' => 'put',
+                'url' => route('member_categories.update', $memberCategory),
+            ]
+
+        ]);
     }
 
     /**
@@ -79,7 +92,13 @@ class MemberCategoryController extends Controller
      */
     public function update(MemberCategoryRequest $request, MemberCategory $memberCategory)
     {
-        //
+        $memberCategory->update([
+
+            'name' => $request->name,
+
+        ]);
+
+        return to_route('member_categories.index')->with('success',  'Kategori Anggota berhasil diubah');
     }
 
     /**

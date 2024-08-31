@@ -175,7 +175,7 @@
                     </div>
                 </div>
             @else
-                <div class="flex justify-between sm:justify-center h-16 max-w-7xl mx-auto" id="navbar">
+                <div class="flex justify-between lg:justify-center h-16 max-w-7xl mx-auto" id="navbar">
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 lg:hidden">

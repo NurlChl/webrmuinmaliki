@@ -14,17 +14,31 @@
                                 <span>Kategori Anggota</span>
                                 <div>
                                     <!-- Modal toggle -->
-                                    <button data-modal-target="create-modal" data-modal-toggle="create-modal"
-                                        class="block absolute right-0 top-0 text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-bl-full text-sm pl-5 pr-2 pb-5 pt-2 text-center"
-                                        type="button">
-                                        <svg class="w-4 h-4 my-auto text-white " aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="currentColor" viewBox="0 0 24 24">
-                                            <path fill-rule="evenodd"
-                                                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </button>
+                                    @if ($page_meta['method'] == 'put')
+                                        <button data-modal-target="create-modal" data-modal-toggle="create-modal"
+                                            class="block absolute right-0 top-0 text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-bl-full text-sm pl-5 pr-2 pb-5 pt-2 text-center"
+                                            type="button">
+                                            <svg class="w-4 h-4 my-auto text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                            </svg>
+                                        </button>
+                                    @else
+                                        <button data-modal-target="create-modal" data-modal-toggle="create-modal"
+                                            class="block absolute right-0 top-0 text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-bl-full text-sm pl-5 pr-2 pb-5 pt-2 text-center"
+                                            type="button">
+                                            <svg class="w-4 h-4 my-auto text-white " aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    @endif
 
                                     <!-- Main modal -->
                                     <div id="create-modal" tabindex="-1" aria-hidden="true"
@@ -112,12 +126,12 @@
                                         {{ $member_category->created_at->format('d-m-Y') }}
                                     </td>
                                     <td class="px-6 py-4 text-right">
-                                        <div class="flex">
-                                            {{-- <a href="{{ route('faculties.edit', $member_category) }}"
-                                                class="font-medium text-yellow-300 hover:underline">Edit</a> --}}
-                                            {{-- <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a> --}}
+                                        <div class="flex gap-5">
+                                            <a href="{{ route('member_categories.edit', $member_category) }}"
+                                                class="font-medium text-yellow-300 hover:underline">Edit</a>
                                             <form onsubmit="return confirm('Yakin hapus anggota ini?')"
-                                                action="{{ route('faculties.destroy', $member_category->id) }}" method="POST">
+                                                action="{{ route('member_categories.destroy', $member_category->id) }}"
+                                                method="POST">
 
                                                 @method('DELETE')
                                                 @csrf
@@ -154,12 +168,14 @@
                         </h2>
                         <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                             <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah kategori anggota, klik tombol
-                                    di pojok kanan atas di dalam tabel. Lalu isi dan lengkapi semua yang harus diisi. Pastikan anda
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah kategori anggota, klik
+                                    tombol
+                                    di pojok kanan atas di dalam tabel. Lalu isi dan lengkapi semua yang harus diisi.
+                                    Pastikan anda
                                     mengisi dengan benar dan jangan lupa cek kembali.</p>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>

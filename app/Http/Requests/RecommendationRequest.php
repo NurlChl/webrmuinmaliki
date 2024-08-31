@@ -23,7 +23,7 @@ class RecommendationRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            'nim' => ['required', 'integer', 'min:10', 'max:20'],
+            'nim' => ['required', 'min:10', 'max:20'],
             'address' => ['required', 'string', 'min:2', 'max:255'],
             'telephone' => ['required', 'integer'],
             'faculty_id' => ['required'],
@@ -37,7 +37,6 @@ class RecommendationRequest extends FormRequest
         return [
             'nim.required' => 'NIM tidak boleh kosong.',
             'nim.min' => 'NIM minimal 10 karakter.',
-            'nim.integer' => 'NIM harus angka.',
             'nim.max' => 'NIM melebihi batas maksimal.',
             'nim.unique' => 'NIM ini sudah ada.',
 
@@ -50,12 +49,12 @@ class RecommendationRequest extends FormRequest
             'address.max' => 'Alamat melebihi batas maksimal.',
             
             'telephone.required' => 'Telepon tidak boleh kosong.',
-            'telephone.integer' => 'Telepon harus angka.',
+            'telephone.integer' => 'Telepon tidak boleh diawali 0.',
             
             'faculty_id.required' => 'Fakultas tidak boleh kosong.',
 
             'generation.required' => 'Angkatan tidak boleh kosong.',
-            'generation.integer' => 'Angkatan harus angka.',
+            'generation.integer' => 'Angkatan tidak boleh diawali 0.',
 
             'body.required' => 'Usulan tidak boleh kosong.',
             'body.min' => 'Usulan minimal 3 karakter.',

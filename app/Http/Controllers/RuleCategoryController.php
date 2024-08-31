@@ -71,7 +71,20 @@ class RuleCategoryController extends Controller
      */
     public function edit(RuleCategory $ruleCategory)
     {
-        //
+        $ruleCategories = RuleCategory::query()->latest()->paginate(20);
+
+        return view('rule_categories.index', [
+
+            '$rule_categories' => $ruleCategories,
+
+            'rule_category' => $ruleCategory,
+            'page_meta' => [
+                'title' => 'Edit Kategori Peraturan',
+                'method' => 'put',
+                'url' => route('rule_categories.update', $ruleCategory),
+            ]
+
+        ]);
     }
 
     /**
@@ -79,7 +92,13 @@ class RuleCategoryController extends Controller
      */
     public function update(RuleCategoryRequest $request, RuleCategory $ruleCategory)
     {
-        //
+        $ruleCategory->update([
+
+            'name' => $request->name,
+
+        ]);
+
+        return to_route('rule_categories.index')->with('success',  'Kategori Peraturan berhasil diubah');
     }
 
     /**

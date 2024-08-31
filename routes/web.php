@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+Route::get('posts?category={category:slug}', [PostController::class, 'category'])->name('posts.category');
 Route::get('members?category={category:slug}', [MemberController::class, 'category'])->name('members.category');
 // Route::get('rules?category={category:slug}', [RuleController::class, 'category'])->name('rules.category');
 // Route::get('rules?period={period}', [RuleController::class, 'period'])->name('rules.period');

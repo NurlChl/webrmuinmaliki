@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Observers\PostObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,6 +26,15 @@ class Post extends Model
         'body',
         // 'views',
     ];
+
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+
+        $query->when($filters['category'] ?? false, fn ($query, $category) =>
+
+            $query->whereHas('member_category', fn ($query) => $query->where('slug', $category))
+        );
+    }
 
     public function user (): BelongsTo
     {

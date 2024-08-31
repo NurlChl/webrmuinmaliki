@@ -17,8 +17,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()->latest()->paginate(20);
-        $postsPopuler = Post::query()->orderBy('views', 'desc')->limit(10)->get();
+        $posts = Post::query()
+            ->with('member_category', fn($query) => $query->select(['id', 'name']))
+            ->filter(request(['search', 'category']))
+            ->latest()
+            ->paginate(10);
+        $postsPopuler = Post::query()
+            ->with('member_category:id,name')
+            ->orderBy('views', 'desc')
+            ->limit(10)->get();
+
         $memberCategory = MemberCategory::all();
 
         return view('posts.index', [
@@ -83,7 +91,7 @@ class PostController extends Controller
 
         return view('posts.show', [
             'post' => $post,
-            
+
         ]);
     }
 
@@ -97,7 +105,7 @@ class PostController extends Controller
 
         return view('posts.form', [
 
-            
+
             'post' => $post,
             'member_categories' => MemberCategory::all(),
             'page_meta' => [

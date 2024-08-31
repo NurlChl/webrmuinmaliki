@@ -27,13 +27,60 @@
                             <x-input-error :messages="$errors->get('name')" />
                         </div>
 
+                        <div class="sm:col-span-2 w-full mx-auto">
+                            <label for="name" :value="__('name')"
+                                class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd"
+                                            d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+
+
+
+
+                                </div>
+                                <input type="text" id="name" name="name"
+                                    value="{{ old('name', $aspiration->name) }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-2.5"
+                                    placeholder="Nama" required>
+                            </div>
+                            <x-input-error :messages="$errors->get('name')" />
+                        </div>
+
+
                         <div class="sm:col-span-2">
                             <label for="nim" :value="__('nim')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
                             <input type="number" name="nim" id="nim"
                                 value="{{ old('nim', $aspiration->nim) }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
-                                placeholder="NIM Mahasiswa" required>
+                                placeholder="Contoh: 219023034923" required>
+                            <x-input-error :messages="$errors->get('nim')" />
+                        </div>
+
+                        <div class="sm:col-span-2 w-full mx-auto">
+                            <label for="nim" :value="__('nim')"
+                                class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd"
+                                            d="M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input type="text" id="nim" name="nim"
+                                    value="{{ old('nim', $aspiration->nim) }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-2.5"
+                                    placeholder="Contoh: 219023034923" required>
+                            </div>
                             <x-input-error :messages="$errors->get('nim')" />
                         </div>
 
@@ -47,6 +94,24 @@
                             <x-input-error :messages="$errors->get('address')" />
                         </div>
 
+                        <div class="sm:col-span-2 w-full mx-auto">
+                            <label for="address" :value="__('address')"
+                                class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+                                      </svg>
+                                      
+                                </div>
+                                <input type="text" id="address" name="address"
+                                    value="{{ old('address', $aspiration->address) }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-2.5"
+                                    placeholder="Alamat" required>
+                            </div>
+                            <x-input-error :messages="$errors->get('address')" />
+                        </div>
+
                         <div class="sm:col-span-2">
                             <label for="telephone" :value="__('telephone')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Telp</label>
@@ -54,6 +119,24 @@
                                 value="{{ old('telephone', $aspiration->telephone) }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
                                 placeholder="Contoh: 6281222333444" required>
+                            <x-input-error :messages="$errors->get('telephone')" />
+                        </div>
+
+                        <div class="sm:col-span-2 w-full mx-auto">
+                            <label for="telephone" :value="__('telephone')"
+                                class="block mb-2 text-sm font-medium text-gray-900">No. Telp</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+                                      </svg>
+                                      
+                                </div>
+                                <input type="number" id="telephone" name="telephone"
+                                    value="{{ old('telephone', $aspiration->telephone) }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-2.5"
+                                    placeholder="Contoh: 6281222333444" required>
+                            </div>
                             <x-input-error :messages="$errors->get('telephone')" />
                         </div>
 
@@ -80,6 +163,24 @@
                                 value="{{ old('generation', $aspiration->generation) }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
                                 placeholder="Contoh: 2021" required>
+                            <x-input-error :messages="$errors->get('generation')" />
+                        </div>
+
+                        <div class="sm:col-span-2 w-full mx-auto">
+                            <label for="generation" :value="__('generation')"
+                                class="block mb-2 text-sm font-medium text-gray-900">Angkatan</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-5 h-5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"/>
+                                      </svg>
+                                      
+                                </div>
+                                <input type="number" id="generation" name="generation"
+                                    value="{{ old('generation', $aspiration->generation) }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full ps-10 p-2.5"
+                                    placeholder="Contoh: 2021" required>
+                            </div>
                             <x-input-error :messages="$errors->get('generation')" />
                         </div>
 

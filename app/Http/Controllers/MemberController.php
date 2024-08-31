@@ -28,13 +28,6 @@ class MemberController extends Controller
     //     ]);
     // }
 
-    public function navMember() {
-
-        return view('layouts.navigation', [
-            'member_categories' => MemberCategory::all(),
-            
-        ]);
-    }
 
 
     /**
