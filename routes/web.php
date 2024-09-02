@@ -44,9 +44,12 @@ Route::middleware('auth')->group(function () {
             Route::resource('member_categories', MemberCategoryController::class)->except(['show']);
             Route::resource('rule_categories', RuleCategoryController::class)->except(['show']);
 
+            
             Route::get('aspirations', [AspirationController::class, 'index'])->name('aspirations.index');
             Route::get('recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');
             Route::get('galleries', [GalleryController::class, 'index'])->name('galleries.index');
+            
+            Route::get('dashboard/posts', [PostController::class, 'dashboard'])->name('posts.dashboard');
         });
     });
 

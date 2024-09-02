@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
 
+    public function dashboard()
+    {
+        $posts = Post::query()
+            ->with('member_category', fn($query) => $query->select(['id', 'name']))
+            ->filter(request(['search', 'category']))
+            ->latest()
+            ->paginate(10);
+
+        return view('posts.dashboard', [
+            'posts' => $posts,
+        ]);
+    }
 
     /**
      * Display a listing of the resource.

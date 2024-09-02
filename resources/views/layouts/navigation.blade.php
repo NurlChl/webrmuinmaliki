@@ -1,5 +1,10 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 relative">
 
+    @php
+        $navStyle = 'justify-between lg:justify-center';
+        $navStyleAuth = 'justify-between';
+    @endphp
+
     <img src="{{ url('/') }}/logo/bg_nav.jpg" alt="bg-nav"
         class="absolute top-0 left-0 w-full h-full object-cover opacity-30">
 
@@ -40,229 +45,140 @@
     <!-- Primary Navigation Menu -->
     <div class="mx-auto relative bg-white w-full">
         <div class="mx-auto px-4 sm:px-6 sm:max-w-4xl lg:max-w-5xl lg:px-8 w-full">
-            @auth
-                <div class="flex justify-between h-16 max-w-7xl mx-auto" id="navbar">
-                    <div class="flex">
-                        <!-- Logo -->
-                        <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 lg:hidden">
-                            <a href="{{ route('home') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                            </a>
-                        </div>
-
-
-                        <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:-my-px lg:flex" id="nav-utama">
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                                {{ __('BERANDA') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts*')">
-                                {{ __('BERITA') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('members.index')" :active="request()->routeIs('members*')" data-dropdown-toggle="dropdownAnggota"
-                                id="dropdownHoverButton" data-dropdown-toggle="dropdownAnggota"
-                                data-dropdown-trigger="hover">
-                                {{ __('ANGGOTA') }}
-                            </x-nav-link>
-
-                            <!-- Dropdown menu -->
-                            <div id="dropdownAnggota"
-                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    @foreach ($member_categories as $member_category)
-                                        <li>
-                                            <a href="{{ route('members.category', $member_category->slug) }}"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $member_category->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <x-nav-link :href="route('rules.index')" :active="request()->routeIs('rules*')" data-dropdown-toggle="dropdownPeraturan"
-                                id="dropdownHoverButton" data-dropdown-toggle="dropdownPeraturan"
-                                data-dropdown-trigger="hover">
-                                {{ __('PERATURAN') }}
-                            </x-nav-link>
-
-                            <!-- Dropdown menu -->
-                            <div id="dropdownPeraturan"
-                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    @foreach ($rule_categories as $rule_category)
-                                        <li>
-                                            <a href="{{ route('rules.index', array_merge(request()->query(), ['category' => $rule_category->slug])) }}"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $rule_category->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <x-nav-link :href="route('aspirations.create')" :active="request()->routeIs('aspirations*')">
-                                {{ __('ASPIRASI') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
-                                {{ __('USULAN PERATURAN') }}
-                            </x-nav-link>
-                        </div>
+            <div class="flex @auth {{ $navStyleAuth }} @else {{ $navStyle }} @endauth h-16 max-w-7xl mx-auto"
+                id="navbar">
+                <div class="flex">
+                    <!-- Logo -->
+                    <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 lg:hidden">
+                        <a href="{{ route('home') }}">
+                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        </a>
                     </div>
 
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px lg:flex" id="nav-utama">
+                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            {{ __('BERANDA') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts*')">
+                            {{ __('BERITA') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('members.index')" :active="request()->routeIs('members*')" data-dropdown-toggle="dropdownAnggota"
+                            id="dropdownHoverButton" data-dropdown-toggle="dropdownAnggota"
+                            data-dropdown-trigger="hover">
+                            {{ __('ANGGOTA') }}
+                        </x-nav-link>
 
-                    @auth
-                        <!-- Settings Dropdown -->
-                        <div class="hidden lg:flex sm:items-center sm:ms-6">
-                            <x-dropdown align="right" width="48">
-                                <x-slot name="trigger">
-                                    <button
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                        <div class="uppercase">{{ Auth::user()->name }}</div>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownAnggota"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownHoverButton">
+                                @foreach ($member_categories as $member_category)
+                                    <li>
+                                        <a href="{{ route('members.category', $member_category->slug) }}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $member_category->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
 
-                                        <div class="ms-1">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </x-slot>
+                        <x-nav-link :href="route('rules.index')" :active="request()->routeIs('rules*')" data-dropdown-toggle="dropdownPeraturan"
+                            id="dropdownHoverButton" data-dropdown-toggle="dropdownPeraturan"
+                            data-dropdown-trigger="hover">
+                            {{ __('PERATURAN') }}
+                        </x-nav-link>
 
-                                <x-slot name="content">
-                                    @if (auth()->user()->isAdmin())
-                                        <x-dropdown-link :href="route('dashboard')">
-                                            {{ __('DASHBOARD') }}
-                                        </x-dropdown-link>
-                                    @endif
+                        <!-- Dropdown menu -->
+                        <div id="dropdownPeraturan"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownHoverButton">
+                                @foreach ($rule_categories as $rule_category)
+                                    <li>
+                                        <a href="{{ route('rules.index', array_merge(request()->query(), ['category' => $rule_category->slug])) }}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $rule_category->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
 
-                                    <x-dropdown-link :href="route('profile.edit')">
-                                        {{ __('PROFILE') }}
+                        <x-nav-link :href="route('aspirations.create')" :active="request()->routeIs('aspirations*')">
+                            {{ __('ASPIRASI') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
+                            {{ __('USULAN PERATURAN') }}
+                        </x-nav-link>
+                    </div>
+                </div>
+
+
+                @auth
+                    <!-- Settings Dropdown -->
+                    <div class="hidden lg:flex sm:items-center sm:ms-6">
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <div class="uppercase">{{ Auth::user()->name }}</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                @if (auth()->user()->isAdmin())
+                                    <x-dropdown-link :href="route('dashboard')">
+                                        {{ __('DASHBOARD') }}
                                     </x-dropdown-link>
+                                @endif
 
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    {{ __('PROFILE') }}
+                                </x-dropdown-link>
 
-                                        <x-dropdown-link :href="route('logout')"
-                                            onclick="event.preventDefault();
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                                            {{ __('LOG OUT') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
-                        </div>
-                    @endauth
-
-                    <!-- Hamburger -->
-                    <div class="-me-2 flex items-center lg:hidden">
-
-
-                        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
-                            aria-controls="default-sidebar" type="button"
-                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                            <span class="sr-only">Open sidebar</span>
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" fill-rule="evenodd"
-                                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                                </path>
-                            </svg>
-                        </button>
-
-
+                                        {{ __('LOG OUT') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
+                @endauth
+
+                <!-- Hamburger -->
+                <div class="-me-2 flex items-center lg:hidden">
+
+
+                    <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
+                        aria-controls="default-sidebar" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                        <span class="sr-only">Open sidebar</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" fill-rule="evenodd"
+                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+                            </path>
+                        </svg>
+                    </button>
+
+
                 </div>
-            @else
-                <div class="flex justify-between lg:justify-center h-16 max-w-7xl mx-auto" id="navbar">
-                    <div class="flex">
-                        <!-- Logo -->
-                        <div class="shrink-0 flex items-center max-w-7xl  mx-auto px-4 sm:px-6 lg:hidden">
-                            <a href="{{ route('home') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                            </a>
-                        </div>
+            </div>
 
-
-                        <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:-my-px lg:flex" id="nav-utama">
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                                {{ __('BERANDA') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts*')">
-                                {{ __('BERITA') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('members.index')" :active="request()->routeIs('members*')" data-dropdown-toggle="dropdownAnggota"
-                                id="dropdownHoverButton" data-dropdown-toggle="dropdownAnggota"
-                                data-dropdown-trigger="hover">
-                                {{ __('ANGGOTA') }}
-                            </x-nav-link>
-
-                            <!-- Dropdown menu -->
-                            <div id="dropdownAnggota"
-                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    @foreach ($member_categories as $member_category)
-                                        <li>
-                                            <a href="{{ route('members.category', $member_category->slug) }}"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $member_category->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <x-nav-link :href="route('rules.index')" :active="request()->routeIs('rules*')" data-dropdown-toggle="dropdownPeraturan"
-                                id="dropdownHoverButton" data-dropdown-toggle="dropdownPeraturan"
-                                data-dropdown-trigger="hover">
-                                {{ __('PERATURAN') }}
-                            </x-nav-link>
-
-                            <!-- Dropdown menu -->
-                            <div id="dropdownPeraturan"
-                                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    @foreach ($rule_categories as $rule_category)
-                                        <li>
-                                            <a href="{{ route('rules.index', array_merge(request()->query(), ['category' => $rule_category->slug])) }}"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $rule_category->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <x-nav-link :href="route('aspirations.create')" :active="request()->routeIs('aspirations*')">
-                                {{ __('ASPIRASI') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
-                                {{ __('USULAN PERATURAN') }}
-                            </x-nav-link>
-                        </div>
-                    </div>
-
-
-                    <!-- Hamburger -->
-                    <div class="-me-2 flex items-center lg:hidden">
-
-
-                        <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
-                            aria-controls="default-sidebar" type="button"
-                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                            <span class="sr-only">Open sidebar</span>
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" fill-rule="evenodd"
-                                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                                </path>
-                            </svg>
-                        </button>
-
-
-                    </div>
-                </div>
-            @endauth
 
 
             {{-- nav fixed ketika scrol bawah --}}
@@ -391,8 +307,7 @@
                         <svg class="w-6 h-6 text-gray-400 dark:text-white group-hover:text-gray-900 {{ request()->routeIs('home') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                 d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
                         </svg>
 
@@ -442,25 +357,6 @@
                         <span class="ml-3">PERATURAN</span>
                     </a>
                 </li>
-
-
-
-
-
-                {{-- <li>
-                        <a href="{{ route('members.index') }}"
-                            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('members.index') ? 'bg-gray-100' : '' }}">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('members*') ? 'text-gray-900' : '' }}"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
-                            </svg>
-
-                            <span class="ml-3">Anggota</span>
-                        </a>
-                    </li> --}}
 
             </ul>
             <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
@@ -581,5 +477,4 @@
         }
     </script>
 
-    {{-- </div> --}}
 </nav>

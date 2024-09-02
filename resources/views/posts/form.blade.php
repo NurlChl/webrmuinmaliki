@@ -1,7 +1,7 @@
 <x-app-layout>
 
     @slot('tittle', $page_meta['title'])
-   
+
     <x-side-nav>
         <section class="bg-white dark:bg-gray-900 w-full p-5">
             <div class="py-8 px-0 sm:px-4 max-w-screen-md lg:py-10 ">
@@ -122,18 +122,16 @@
 
         }
 
-        const hapusLink = document.querySelector('.trix-button-group--file-tools')
-        hapusLink.style.display = 'none'
-
         document.addEventListener("trix-initialize", function(event) {
             const editor = event.target;
             const toolbar = editor.toolbarElement;
 
-            // Remove the image upload button
-            const imageButton = toolbar.querySelector("[data-trix-action=attachFiles]");
-            if (imageButton) {
-                imageButton.remove();
-            }
+            const imageButton = toolbar.querySelector("[data-trix-action='attachFiles']");
+            imageButton.style.display = 'none';
+
+            const fileToolsGroup = toolbar.querySelector('.trix-button-group--file-tools');
+            fileToolsGroup.style.display = 'none';
+
         });
     </script>
 </x-app-layout>

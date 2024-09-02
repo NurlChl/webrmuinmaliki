@@ -1,11 +1,12 @@
 <x-app-layout>
 
     @slot('tittle', $page_meta['title'])
-    {{-- <x-slot name="header">
-        <h2 class="font-normal text-sm text-gray-500 leading-tight">
-            {{ __('posts > create') }}
-        </h2>
-    </x-slot> --}}
+    @php
+        $inputError =
+            'bg-red-50 border border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500';
+        $inputValid = 'bg-green-50 border border-green-300 text-green-900 focus:ring-green-500 focus:border-green-500';
+        $inputFirst = 'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-emerald-500 focus:border-emerald-500';
+    @endphp
     <x-form-container class="relative bg-zinc-200 bg-fixed bg-cover"
         style="background-image: url('http://projekuin.test/logo/unsplashbg2.jpg')">
         <canvas id="canvas" class="opacity-60 absolute left-0 top-0 w-full h-full z-0"></canvas>

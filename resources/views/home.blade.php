@@ -1,10 +1,5 @@
 <x-app-layout>
     @slot('tittle', 'Home')
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Home') }}
-        </h2>
-    </x-slot> --}}
 
     <section class="relative py-20 sm:py-40 lg:py-52 bg-no-repeat bg-cover bg-center"
         style="background-image: url('{{ url('/') }}/logo/uin.jpeg')">

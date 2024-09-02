@@ -35,7 +35,7 @@
                                     </svg>
                                     <span>Edit</span>
                                 </a>
-                                <form onsubmit="return confirm('Yakin hapus anggota ini?')"
+                                <form onsubmit="return confirm('Yakin hapus Berita ini?')"
                                     action="{{ route('posts.destroy', $post) }}" method="POST">
                                     @method('DELETE')
                                     @csrf

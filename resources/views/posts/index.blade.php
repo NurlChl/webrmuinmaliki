@@ -6,7 +6,7 @@
             {{ __('Posts') }}
         </h2>
     </x-slot> --}}
-    <x-container class="max-w-screen-xl mx-auto bg-white lg:mt-10">
+    <x-container class="max-w-screen-xl mx-auto px-3 py-10 lg:px-0 bg-white lg:mt-10">
         <section class="mb-10 max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto py-2">
             <div class="flex gap-3 overflow-x-auto whitespace-nowrap" style="scrollbar-width: none">
                 <x-badge href="{{ route('posts.index') }}" :active="!request('category')">Semua</x-badge>
@@ -48,6 +48,9 @@
                             </div>
                         @endforelse
                     </div>
+                    <div class="mt-8">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
 
                 <div class="basis-1/3 max-h-screen overflow-y-auto"  style="scrollbar-width:none">
@@ -87,9 +90,7 @@
                 </div>
             </div>
 
-            <div class="mt-8">
-                {{ $posts->links() }}
-            </div>
+            
         </section>
 
         <section class="max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto mt-20">
