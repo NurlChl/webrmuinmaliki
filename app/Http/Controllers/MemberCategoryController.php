@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberCategoryRequest;
 use App\Models\MemberCategory;
+use Illuminate\Database\QueryException;
 
 class MemberCategoryController extends Controller
 {
@@ -106,8 +107,16 @@ class MemberCategoryController extends Controller
      */
     public function destroy(MemberCategory $memberCategory)
     {
-        $memberCategory->delete();
+        // $memberCategory->delete();
 
-        return back()->with('success',  $memberCategory->name .' berhasil dihapus');
+        // return back()->with('success',  $memberCategory->name .' berhasil dihapus');
+
+        try {
+            $memberCategory->delete();
+            return back()->with('success', $memberCategory->name . ' berhasil dihapus');
+        } catch (QueryException $e) {
+            $e;
+            return back()->with('success', 'Gagal menghapus ' . $memberCategory->name . ' karena masih memiliki relasi dengan data lain.');
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FacultyRequest;
 use App\Models\Faculty;
+use Illuminate\Database\QueryException;
 
 class FacultyController extends Controller
 {
@@ -108,8 +109,16 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        $faculty->delete();
+        // $faculty->delete();
 
-        return back()->with('success',  'Fak. ' . $faculty->name .' berhasil dihapus');
+        // return back()->with('success',  'Fak. ' . $faculty->name .' berhasil dihapus');
+
+        try {
+            $faculty->delete();
+            return back()->with('success', $faculty->name . ' berhasil dihapus');
+        } catch (QueryException $e) {
+            $e;
+            return back()->with('success', 'Gagal menghapus ' . $faculty->name . ' karena masih memiliki relasi dengan data lain.');
+        }
     }
 }

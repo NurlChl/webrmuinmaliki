@@ -5,9 +5,9 @@
 
     <x-side-nav>
         <section class="bg-white dark:bg-gray-900">
-            <div
-                class="flex flex-col xl:flex-row gap-5 py-8 px-2 sm:py-8 sm:px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="relative h-fit w-full overflow-x-auto shadow-md sm:rounded-lg border border-emerald-600">
+            <div class="flex flex-col md:flex-row gap-5 px-2 sm:px-4 mx-auto max-w-screen-xl">
+                <div
+                    class="md:basis-2/3 relative h-fit w-full overflow-x-auto shadow-md sm:rounded-lg border border-emerald-600">
                     <table class="relative w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white">
                             <div class="flex justify-between gap-5">
@@ -50,7 +50,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
                                                     <h3 class="text-xl font-semibold text-gray-900 ">
-                                                        Tambah Fakultas
+                                                        Tambah Kategori Anggota
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -103,10 +103,10 @@
                                 dari
                                 kategori anggota yang akan dijadikan opsi pengisian form.</p>
                         </caption>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 whitespace-nowrap">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Fakultas
+                                    Nama Kategori
                                 </th>
                                 <th scope="col" class="hidden sm:block px-6 py-3">
                                     Dibuat
@@ -118,7 +118,7 @@
                         </thead>
                         <tbody>
                             @forelse ($member_categories as $member_category)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 whitespace-nowrap">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                         {{ $member_category->name }}
                                     </th>
@@ -149,7 +149,7 @@
                     </table>
                 </div>
 
-                <div class="w-full">
+                <div class="md:basis-1/3 w-full">
                     <div id="accordion-flush" data-accordion="collapse"
                         data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                         data-inactive-classes="text-gray-500 dark:text-gray-400">

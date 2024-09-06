@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_category_id')->constrained('member_categories', 'id');
+            $table->foreignId('member_category_id')->constrained('member_categories', 'id')->cascadeOnDelete();
             // $table->foreignIdFor(MemberCategory::class)->constrained();
             $table->integer('nim');
             $table->string('name');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RuleRequest;
 use App\Models\Rule;
 use App\Models\RuleCategory;
+use Illuminate\Http\Request;
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,6 +14,30 @@ use Illuminate\Support\Str;
 class RuleController extends Controller
 {
 
+    public function dashboard ()
+    {
+        $requestCategory = request('category');
+        $selectedCategory = $requestCategory ? RuleCategory::where('slug', $requestCategory)->first()->name : null;
+
+        $requestPeriod = request('period');
+        $selectedPeriod = $requestPeriod ?? null;
+
+        $rules = Rule::query()
+                    ->with('ruleCategory', fn ($query) => $query->select(['id', 'name']))
+                    ->filterRule(request()->only(['search', 'category',]))
+                    ->filterRulePeriod(request()->only(['period',]))
+                    ->orderBy('period', 'desc')
+                    ->paginate(10);
+        
+        return view('rules.dashboard', [
+            'rule_categories' => RuleCategory::all(),
+            'rules' => $rules,
+
+            'selectedCategory' => $selectedCategory,
+            'selectedPeriod' => $selectedPeriod,
+
+        ]);
+    }
 
 
     /**
@@ -79,7 +104,7 @@ class RuleController extends Controller
             ...['file' => $file->store('files/rules')],
         ]);
 
-        return to_route('rules.create')->with('success', 'Aturan baru berhasil ditambahkan');
+        return back()->with('success', 'Aturan baru berhasil ditambahkan');
         
     }
 
@@ -147,5 +172,18 @@ class RuleController extends Controller
         $rule->delete();
 
         return to_route('rules.index')->with('success', Str::limit($rule->name, 20) . ' : berhasil dihapus');
+    }
+
+    public function bulkDelete(Request $request)
+    {
+        // return dd($request->ids);
+        $ids = $request->ids;
+
+        if (is_array($ids) && count($ids) > 0) {
+            Rule::whereIn('id', $ids)->delete();
+            return redirect()->back()->with('success', 'peraturan terpilih berhasil dihapus.');
+        }
+
+        return redirect()->back()->with('error', 'Tidak ada peraturan yang terhapus.');
     }
 }

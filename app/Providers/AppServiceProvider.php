@@ -31,12 +31,12 @@ class AppServiceProvider extends ServiceProvider
         // Model::preventLazyLoading(!app()->isProduction());
 
         View::composer('*', function ($view) {
-            $member_categories = MemberCategory::all();
+            $member_categories = MemberCategory::query()->orderBy('name', 'asc')->get();
             $view->with('member_categories', $member_categories);
         });
 
         View::composer('*', function ($view) {
-            $rule_categories = RuleCategory::all();
+            $rule_categories = RuleCategory::query()->orderBy('name', 'asc')->get();
             $view->with('rule_categories', $rule_categories);
         });
     }

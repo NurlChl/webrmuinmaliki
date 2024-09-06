@@ -6,12 +6,12 @@
     <x-side-nav>
         <section class="bg-white dark:bg-gray-900">
             <div
-                class="flex flex-col xl:flex-row gap-5 py-8 px-2 sm:py-8 sm:px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="relative h-fit w-full overflow-x-auto shadow-md sm:rounded-lg border border-emerald-600">
+                class="flex flex-col md:flex-row gap-5 py-8 px-2 sm:py-8 sm:px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                <div class="basis-2/3 relative h-fit w-full overflow-x-auto shadow-md sm:rounded-lg border border-emerald-600">
                     <table class="relative w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white">
                             <div class="flex justify-between gap-5">
-                                <span>Kategori Anggota</span>
+                                <span>Kategori Peraturan</span>
                                 <div>
                                     <!-- Modal toggle -->
                                     @if ($page_meta['method'] == 'put')
@@ -50,7 +50,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
                                                     <h3 class="text-xl font-semibold text-gray-900 ">
-                                                        Tambah Fakultas
+                                                        Tambah Kategori Peraturan
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
@@ -101,12 +101,12 @@
                             </div>
                             <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Berikut adalah list
                                 dari
-                                kategori anggota yang akan dijadikan opsi pengisian form.</p>
+                                kategori peraturan yang akan dijadikan opsi pengisian form.</p>
                         </caption>
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 whitespace-nowrap">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Fakultas
+                                    Nama Kategori
                                 </th>
                                 <th scope="col" class="hidden sm:block px-6 py-3">
                                     Dibuat
@@ -118,7 +118,7 @@
                         </thead>
                         <tbody>
                             @forelse ($rule_categories as $rule_category)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 whitespace-nowrap">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                         {{ $rule_category->name }}
                                     </th>
@@ -129,7 +129,7 @@
                                         <div class="flex gap-5">
                                             <a href="{{ route('rule_categories.edit', $rule_category) }}"
                                                 class="font-medium text-yellow-300 hover:underline">Edit</a>
-                                            <form onsubmit="return confirm('Yakin hapus anggota ini?')"
+                                            <form onsubmit="return confirm('Yakin hapus peraturan ini?')"
                                                 action="{{ route('rule_categories.destroy', $rule_category->id) }}"
                                                 method="POST">
 
@@ -147,9 +147,10 @@
                             @endforelse
                         </tbody>
                     </table>
+                   
                 </div>
 
-                <div class="w-full">
+                <div class="w-full basis-1/3">
                     <div id="accordion-flush" data-accordion="collapse"
                         data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                         data-inactive-classes="text-gray-500 dark:text-gray-400">
@@ -158,7 +159,7 @@
                                 class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
                                 data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
                                 aria-controls="accordion-flush-body-1">
-                                <span class="text-start">Gimana cara tambah kategori anggota?</span>
+                                <span class="text-start">Gimana cara tambah kategori peraturan?</span>
                                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -168,7 +169,7 @@
                         </h2>
                         <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                             <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah kategori anggota, klik
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah kategori peraturan, klik
                                     tombol
                                     di pojok kanan atas di dalam tabel. Lalu isi dan lengkapi semua yang harus diisi.
                                     Pastikan anda

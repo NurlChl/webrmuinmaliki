@@ -26,10 +26,11 @@
                                 <a href="{{ route('posts.show', $post) }}"
                                     class="absolute top-0 left-0 w-full h-full object-cover z-20"></a>
                                 <div class="flex flex-col gap-1 py-3">
-                                    <h2 class="px-4 font-semibold capitalize text-lg border-l-[3px] border-yellow-400">
+                                    <h2 class="px-4 font-semibold text-lg border-l-[3px] border-yellow-400">
                                         {{ $post->tittle }}</h2>
                                     <p class="px-4 text-sm font-medium text-slate-600">
-                                        {{ $post->created_at->format('d M Y') }} / <span
+                                        {{ $post->created_at->translatedFormat('d F
+                                         Y') }} / <span
                                             class="text-yellow-600 uppercase">{{ $post->member_category->name }}</span></p>
                                     <p class="px-4 text-sm">{{ Str::limit($post->excerpt, 150) }}</p>
                                 </div>
@@ -53,8 +54,8 @@
                     </div>
                 </div>
 
-                <div class="basis-1/3 max-h-screen overflow-y-auto"  style="scrollbar-width:none">
-                    <div class="basis-1/3 bg-white px-3">
+                <div class="xl:basis-1/3 xl:max-h-screen overflow-y-auto"  style="scrollbar-width:none">
+                    <div class="bg-white px-3">
                         <h2 class="text-center sm:text-start uppercase text-lg font-bold text-red-600 mb-5">BERITA POPULER
                         </h2>
     
@@ -62,11 +63,11 @@
                             @forelse ($posts_populer as $post_populer)
                                 <article class="relative flex gap-2">
                                     <img src="{{ $post_populer->image }}" alt="{{ $post_populer->slug }}"
-                                        class="w-32 aspect-video object-cover">
+                                        class="w-32 aspect-video object-cover rounded-lg">
                                     <a href="{{ route('posts.show', $post_populer) }}"
                                         class="absolute top-0 left-0 w-full h-full"></a>
                                     <div class="flex flex-col">
-                                        <h2 class="font-bold capitalize">{{ Str::limit($post_populer->tittle, 40) }}</h2>
+                                        <h2 class="font-semibold line-clamp-2">{{ $post_populer->tittle }}</h2>
                                         <div class="flex">
                                             <span class="my-auto">
                                                 <svg class="w-5 h-5 text-gray-500" aria-hidden="true"

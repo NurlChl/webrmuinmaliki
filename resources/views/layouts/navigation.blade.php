@@ -15,7 +15,7 @@
             <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
         </a>
 
-        <p class="my-auto">{{ Now()->format('l, d F Y ') }}</p>
+        <p class="my-auto">{{ Now()->translatedFormat('l, d F Y') }}</p>
     </div>
 
     @auth
@@ -72,14 +72,13 @@
                         <!-- Dropdown menu -->
                         <div id="dropdownAnggota"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownHoverButton">
-                                @foreach ($member_categories as $member_category)
-                                    <li>
+                            <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownHoverButton">
+                                <li class="max-h-52 overflow-y-auto">
+                                    @foreach ($member_categories as $member_category)
                                         <a href="{{ route('members.category', $member_category->slug) }}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $member_category->name }}</a>
-                                    </li>
-                                @endforeach
+                                    @endforeach
+                                </li>
                             </ul>
                         </div>
 
@@ -94,12 +93,12 @@
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                 aria-labelledby="dropdownHoverButton">
-                                @foreach ($rule_categories as $rule_category)
-                                    <li>
+                                <li class="max-h-52 overflow-y-auto">
+                                    @foreach ($rule_categories as $rule_category)
                                         <a href="{{ route('rules.index', array_merge(request()->query(), ['category' => $rule_category->slug])) }}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $rule_category->name }}</a>
-                                    </li>
-                                @endforeach
+                                    @endforeach
+                                </li>
                             </ul>
                         </div>
 
@@ -108,6 +107,9 @@
                         </x-nav-link>
                         <x-nav-link :href="route('recommendations.create')" :active="request()->routeIs('recommendations*')">
                             {{ __('USULAN PERATURAN') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('abouts.index')" :active="request()->routeIs('abouts*')">
+                            {{ __('TENTANG') }}
                         </x-nav-link>
                     </div>
                 </div>
@@ -355,6 +357,62 @@
 
 
                         <span class="ml-3">PERATURAN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('aspirations.create') }}"
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('aspirations.create') ? 'bg-gray-100' : '' }}">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('aspirations*') ? 'text-gray-900' : '' }}"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                        </svg>
+
+
+                        <span class="ml-3">ASPIRASI</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('recommendations.create') }}"
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('recommendations.create') ? 'bg-gray-100' : '' }}">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('recommendations*') ? 'text-gray-900' : '' }}"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                        </svg>
+
+
+                        <span class="ml-3">USULAN PERATURAN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('recommendations.create') }}"
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('recommendations.create') ? 'bg-gray-100' : '' }}">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('recommendations*') ? 'text-gray-900' : '' }}"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                        </svg>
+
+
+                        <span class="ml-3">USULAN PERATURAN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('abouts.index') }}"
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('abouts.create') ? 'bg-gray-100' : '' }}">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('abouts*') ? 'text-gray-900' : '' }}"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                        </svg>
+
+
+                        <span class="ml-3">Tentang</span>
                     </a>
                 </li>
 

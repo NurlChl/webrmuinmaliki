@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('recommendations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('faculty_id')->constrained('faculties', 'id');
+            $table->foreignId('faculty_id')->constrained('faculties', 'id')->cascadeOnDelete();
             $table->string('name');
             $table->integer('nim');
             $table->string('address');

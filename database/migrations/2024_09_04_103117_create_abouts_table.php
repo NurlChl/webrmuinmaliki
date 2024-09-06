@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rules', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rule_category_id')->constrained('rule_categories', 'id')->cascadeOnDelete();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->integer('period');
-            $table->string('file');
+            $table->string('body');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rules');
+        Schema::dropIfExists('abouts');
     }
 };

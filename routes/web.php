@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AspirationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
@@ -23,6 +24,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('members', [MemberController::class, 'index'])->name('members.index');
 Route::get('rules', [RuleController::class, 'index'])->name('rules.index');
+Route::get('abouts', [AboutController::class, 'index'])->name('abouts.index');
 
 Route::resource('aspirations', AspirationController::class)->except('index', 'show');
 Route::resource('recommendations', RecommendationController::class)->except('index', 'show');
@@ -43,13 +45,22 @@ Route::middleware('auth')->group(function () {
             Route::resource('faculties', FacultyController::class)->except(['show']);
             Route::resource('member_categories', MemberCategoryController::class)->except(['show']);
             Route::resource('rule_categories', RuleCategoryController::class)->except(['show']);
+            Route::resource('abouts', AboutController::class)->except(['index', 'show']);
 
-            
+            Route::delete('bulk-delete/posts', [PostController::class, 'bulkDelete'])->name('posts.bulkDelete');
+            Route::delete('bulk-delete/members', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
+            Route::delete('bulk-delete/rules', [RuleController::class, 'bulkDelete'])->name('rules.bulkDelete');
+      
             Route::get('aspirations', [AspirationController::class, 'index'])->name('aspirations.index');
             Route::get('recommendations', [RecommendationController::class, 'index'])->name('recommendations.index');
             Route::get('galleries', [GalleryController::class, 'index'])->name('galleries.index');
-            
+
             Route::get('dashboard/posts', [PostController::class, 'dashboard'])->name('posts.dashboard');
+            Route::get('dashboard/rules', [RuleController::class, 'dashboard'])->name('rules.dashboard');
+            Route::get('dashboard/members', [MemberController::class, 'dashboard'])->name('members.dashboard');
+            
+            Route::get('dashboard/members?category={category:slug}', [MemberController::class, 'category'])->name('members.dashboardCategory');
+            Route::get('dashboard/posts?category={category:slug}', [PostController::class, 'category'])->name('posts.dashboardCategory');
         });
     });
 

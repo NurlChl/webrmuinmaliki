@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MemberRequest;
 use App\Models\Member;
 use App\Models\MemberCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
@@ -28,6 +29,25 @@ class MemberController extends Controller
     //     ]);
     // }
 
+    public function dashboard () 
+    {
+        $requestCategory = request('category');
+        $selectedCategory = $requestCategory ? MemberCategory::where('slug', $requestCategory)->first()->name : null;
+
+        $members = Member::query()
+            ->with('memberCategory', fn($query) => $query->select(['id', 'name']))
+            ->filter(request(['search', 'category']))
+            ->latest()
+            ->paginate(10);
+
+
+        return view('members.dashboard', [
+
+            'member_categories' => MemberCategory::all(),
+            'members' => $members,
+            'selectedCategory' => $selectedCategory,
+        ]);
+    }
 
 
     /**
@@ -88,7 +108,7 @@ class MemberController extends Controller
             ...['image' => $file->store('images/members')],
         ]);
 
-        return to_route('members.index')->with('success', 'Anggota baru berhasil ditambahkan');
+        return back()->with('success', 'Anggota baru berhasil ditambahkan');
     }
 
     /**
@@ -158,5 +178,18 @@ class MemberController extends Controller
         $member->delete();
 
         return to_route('members.index')->with('success', $member->name . ' : berhasil dihapus');
+    }
+
+    public function bulkDelete(Request $request)
+    {
+        // return dd($request->ids);
+        $ids = $request->ids;
+
+        if (is_array($ids) && count($ids) > 0) {
+            Member::whereIn('id', $ids)->delete();
+            return redirect()->back()->with('success', 'Anggota terpilih berhasil dihapus.');
+        }
+
+        return redirect()->back()->with('error', 'Tidak ada anggota yang terhapus.');
     }
 }

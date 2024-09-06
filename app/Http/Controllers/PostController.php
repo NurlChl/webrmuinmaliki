@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\MemberCategory;
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,12 +16,14 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->with('member_category', fn($query) => $query->select(['id', 'name']))
-            ->filter(request(['search', 'category']))
+            ->filter(request(['category']))
             ->latest()
             ->paginate(10);
 
         return view('posts.dashboard', [
             'posts' => $posts,
+            'member_categories' => MemberCategory::all(),
+
         ]);
     }
 
@@ -31,7 +34,7 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->with('member_category', fn($query) => $query->select(['id', 'name']))
-            ->filter(request(['search', 'category']))
+            ->filter(request(['category']))
             ->latest()
             ->paginate(10);
         $postsPopuler = Post::query()
@@ -59,7 +62,7 @@ class PostController extends Controller
             'post' => new Post(),
             'member_categories' => MemberCategory::all(),
             'page_meta' => [
-                'title' => 'Buat Postingan',
+                'title' => 'Tambah Postingan',
                 'method' => 'post',
                 'url' => route('posts.store'),
             ]
@@ -163,6 +166,20 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return to_route('posts.index')->with('success', 'Postingan berhasil dihapus');
+        return back()->with('success', 'Postingan berhasil dihapus');
+    }
+
+
+    public function bulkDelete(Request $request)
+    {
+        // return dd($request->ids);
+        $ids = $request->ids;
+
+        if (is_array($ids) && count($ids) > 0) {
+            Post::whereIn('id', $ids)->delete();
+            return redirect()->back()->with('success', 'Berita terpilih berhasil dihapus.');
+        }
+
+        return redirect()->back()->with('error', 'Tidak ada berita yang terhapus.');
     }
 }

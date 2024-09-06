@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RuleCategoryRequest;
 use App\Models\RuleCategory;
+use Illuminate\Database\QueryException;
 
 class RuleCategoryController extends Controller
 {
@@ -12,7 +13,7 @@ class RuleCategoryController extends Controller
      */
     public function index()
     {
-        $ruleCategories = RuleCategory::query()->latest()->paginate(20);
+        $ruleCategories = RuleCategory::query()->latest()->paginate(10);
 
         return view('rule_categories.index', [
 
@@ -71,11 +72,11 @@ class RuleCategoryController extends Controller
      */
     public function edit(RuleCategory $ruleCategory)
     {
-        $ruleCategories = RuleCategory::query()->latest()->paginate(20);
+        $ruleCategories = RuleCategory::query()->latest()->paginate(10);
 
         return view('rule_categories.index', [
 
-            '$rule_categories' => $ruleCategories,
+            'rule_categories' => $ruleCategories,
 
             'rule_category' => $ruleCategory,
             'page_meta' => [
@@ -106,8 +107,16 @@ class RuleCategoryController extends Controller
      */
     public function destroy(RuleCategory $ruleCategory)
     {
-        $ruleCategory->delete();
+        // $ruleCategory->delete();
 
-        return back()->with('success',  $ruleCategory->name .' berhasil dihapus');
+        // return back()->with('success',  $ruleCategory->name .' berhasil dihapus');
+
+        try {
+            $ruleCategory->delete();
+            return back()->with('success', $ruleCategory->name . ' berhasil dihapus');
+        } catch (QueryException $e) {
+            $e;
+            return back()->with('success', 'Gagal menghapus ' . $ruleCategory->name . ' karena masih memiliki relasi dengan data lain.');
+        }
     }
 }

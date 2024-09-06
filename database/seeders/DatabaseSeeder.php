@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
     //    ])->create();
 
     //     Post::factory(10)->create();
-    //     User::factory(5)->create();
+        // User::factory(5)->create();
 
-    //     MemberCategory::all()->create();
+        // MemberCategory::all()->create();
 
         // User::create([
         //     'name' => 'cholil',
@@ -40,96 +40,96 @@ class DatabaseSeeder extends Seeder
         //     'remember_token' => Str::random(10),
         // ]);
 
-        // MemberCategory::create([
-        //     'name' => 'Dema U',
-        //     'slug' => 'dema-u'
-        // ]);
+        MemberCategory::create([
+            'name' => 'Dema U',
+            'slug' => 'dema-u'
+        ]);
 
-        // MemberCategory::create([
-        //     'name' => 'Sema U',
-        //     'slug' => 'sema-u'
-        // ]);
+        MemberCategory::create([
+            'name' => 'Sema U',
+            'slug' => 'sema-u'
+        ]);
         
-        // MemberCategory::create([
-        //     'name' => 'Sema Fak Syariah',
-        //     'slug' => 'sema-f-syariah'
-        // ]);
+        MemberCategory::create([
+            'name' => 'Sema Fak Syariah',
+            'slug' => 'sema-f-syariah'
+        ]);
         
-        // MemberCategory::create([
-        //     'name' => 'Dema Fak Syariah',
-        //     'slug' => 'dema-fak-syariah'
-        // ]);
-        
-
-        // RuleCategory::create([
-        //     'name' => 'Dema U',
-        //     'slug' => 'dema-u'
-        // ]);
-
-        // RuleCategory::create([
-        //     'name' => 'Sema U',
-        //     'slug' => 'sema-u'
-        // ]);
-        
-        // RuleCategory::create([
-        //     'name' => 'Sema Fak Syariah',
-        //     'slug' => 'sema-f-syariah'
-        // ]);
-
-        // RuleCategory::create([
-        //     'name' => 'Dema Fak Syariah',
-        //     'slug' => 'dema-fak-syariah'
-        // ]);
-
-
-
-        // Faculty::create([
-        //     'name' => 'Saintek',
-        //     'slug' => 'saintek',
-        //     'color' => 'blue',
-        // ]);
-
-        // Faculty::create([
-        //     'name' => 'Psikologi',
-        //     'slug' => 'psikologi',
-        //     'color' => 'green',
-        // ]);
-
-        // Faculty::create([
-        //     'name' => 'Syariah',
-        //     'slug' => 'syariah',
-        //     'color' => 'yellow',
-        // ]);
-
-        // Faculty::create([
-        //     'name' => 'Tarbiyah',
-        //     'slug' => 'tarbiyah',
-        //     'color' => 'purple'
-        // ]);
-
-
-        // AspirationType::create([
-        //     'name' => 'Komplain',
-        //     'slug' => 'komplain',
-        // ]);
-
-        // AspirationType::create([
-        //     'name' => 'Aspirasi',
-        //     'slug' => 'aspirasi',
-        // ]);
-
-        // AspirationType::create([
-        //     'name' => 'Pengajuan Informasi',
-        //     'slug' => 'pengajuan-informasi',
-        // ]);
-
-
-        // $this->call([
-        //     RoleSeeder::class,
-        // ]);
+        MemberCategory::create([
+            'name' => 'Dema Fak Syariah',
+            'slug' => 'dema-fak-syariah'
+        ]);
         
 
-        Post::factory(10)->create();
+        RuleCategory::create([
+            'name' => 'Dema U',
+            'slug' => 'dema-u'
+        ]);
+
+        RuleCategory::create([
+            'name' => 'Sema U',
+            'slug' => 'sema-u'
+        ]);
+        
+        RuleCategory::create([
+            'name' => 'Sema Fak Syariah',
+            'slug' => 'sema-f-syariah'
+        ]);
+
+        RuleCategory::create([
+            'name' => 'Dema Fak Syariah',
+            'slug' => 'dema-fak-syariah'
+        ]);
+
+
+
+        Faculty::create([
+            'name' => 'Saintek',
+            'slug' => 'saintek',
+            'color' => 'blue',
+        ]);
+
+        Faculty::create([
+            'name' => 'Psikologi',
+            'slug' => 'psikologi',
+            'color' => 'green',
+        ]);
+
+        Faculty::create([
+            'name' => 'Syariah',
+            'slug' => 'syariah',
+            'color' => 'yellow',
+        ]);
+
+        Faculty::create([
+            'name' => 'Tarbiyah',
+            'slug' => 'tarbiyah',
+            'color' => 'purple'
+        ]);
+
+
+        AspirationType::create([
+            'name' => 'Komplain',
+            'slug' => 'komplain',
+        ]);
+
+        AspirationType::create([
+            'name' => 'Aspirasi',
+            'slug' => 'aspirasi',
+        ]);
+
+        AspirationType::create([
+            'name' => 'Pengajuan Informasi',
+            'slug' => 'pengajuan-informasi',
+        ]);
+
+
+        $this->call([
+            RoleSeeder::class,
+        ]);
+        
+
+        // Post::factory(10)->create();
 
     }
 

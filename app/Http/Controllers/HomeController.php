@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
 
-        $carousels = Post::query()->latest()->limit(5)->get();
+        $carousels = Post::query()->orderBy('views', 'desc')->limit(5)->get();
         $posts = Post::query()->latest()->limit(10)->get();
         $galleries = Gallery::query()->latest()->limit(10)->get();
 

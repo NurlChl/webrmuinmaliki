@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('aspirations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('faculty_id')->constrained('faculties', 'id');
-            $table->foreignId('type_id')->constrained('aspiration_types', 'id');
+            $table->foreignId('faculty_id')->constrained('faculties', 'id')->cascadeOnDelete();
+            $table->foreignId('type_id')->constrained('aspiration_types', 'id')->cascadeOnDelete();
             $table->string('name');
             $table->integer('nim');
             $table->string('address');

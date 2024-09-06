@@ -10,7 +10,7 @@
                     <h1
                         class="text-lg font-bold sm:text-3xl sm:font-extrabold leading-tight text-gray-900 mb-2 lg:mb-2 lg:text-4xl dark:text-white">
                         {{ $post->tittle }}</h1>
-                    <a href="#"
+                    <a href="{{ route('posts.category', $post->member_category) }}"
                         class="mb-4 lg:mb-6 bg-emerald-100 text-emerald-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded ">
                         <svg class="mr-1 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 20 20">
@@ -18,50 +18,10 @@
                                 d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
                                 clip-rule="evenodd" />
                         </svg>
-
-
                         <span>{{ $post->member_category->name }}</span>
                     </a>
-                    @auth
-                        @if (auth()->user()->isAdmin())
-                            <div class="flex gap-3 mb-2">
-                                <a href="{{ route('posts.edit', $post) }}"
-                                    class=" flex space-x-1 text-yellow-400 hover:underline">
-                                    <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1"
-                                            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                    </svg>
-                                    <span>Edit</span>
-                                </a>
-                                <form onsubmit="return confirm('Yakin hapus Berita ini?')"
-                                    action="{{ route('posts.destroy', $post) }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-
-                                    <button class="flex space-x-1 text-red-600 hover:underline ">
-                                        <svg class="w-full h-full self-center" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1"
-                                                d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-                                        </svg>
-                                        <span>Hapus</span>
-                                    </button>
-                                </form>
-                            </div>
-                        @endif
-                    @endauth
-                    {{-- @auth
-                        @if ($post->user_id === auth()->user()->id)
-                        @endif
-                    @endauth --}}
-
                     <img src="{{ Storage::url($post->image) }}" alt="{{ $post->tittle }}"
                         class="w-full aspect-video object-cover mb-5">
-
                 </header>
 
                 {!! $post->body !!}
@@ -133,9 +93,8 @@
                                         data-modal-toggle="course-modal">
                                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"
-                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                         </svg>
                                         <span class="sr-only">Close modal</span>
                                     </button>
@@ -162,8 +121,8 @@
                                             </span>
                                             <span id="success-icon-course-url" class="hidden items-center">
                                                 <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none" viewBox="0 0 16 12">
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round" stroke-width="2"
                                                         d="M1 5.917 5.724 10.5 15 1.5" />

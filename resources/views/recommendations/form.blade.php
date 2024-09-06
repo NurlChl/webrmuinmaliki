@@ -9,7 +9,7 @@
     @endphp
 
     <x-container>
-        <section class=" mx-auto w-full sm:p-5 bg-white max-w-screen-md">
+        <section class=" mx-auto w-full p-5 bg-white max-w-screen-md">
             <div class="py-8 px-0 sm:px-4 max-w-screen-md lg:py-10 mx-auto">
                 <h2 class="mb-10 text-xl sm:text-3xl font-bold text-gray-900 text-center">{{ $page_meta['title'] }}
                 </h2>
