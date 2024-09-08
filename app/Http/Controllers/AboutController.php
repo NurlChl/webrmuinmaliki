@@ -12,6 +12,17 @@ use Illuminate\Validation\ValidationException;
 
 class AboutController extends Controller
 {
+
+    public function dashboard ()
+    {
+        $about = About::query()->first();
+
+        return view('abouts.dashboard', [
+
+            'about' => $about,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */

@@ -5,42 +5,12 @@
     <x-hero-section imageContent="{{ url('/') }}/logo/uin.jpeg">Tentang</x-hero-section>
 
     <main class="relative pt-8 pb-16 lg:pt-16 lg:pb-24 sm:px-5 bg-white dark:bg-gray-900 antialiased">
-        @auth
-            @if (auth()->user()->isAdmin())
-                <div class="flex gap-3 mb-2 absolute top-0 left-0 bg-yellow-200 p-5 rounded-br-full">
-                    <a href="{{ route('abouts.edit', $about) }}" class=" flex space-x-1 text-yellow-400 hover:underline">
-                        <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                        </svg>
-                        <span>Edit</span>
-                    </a>
-                </div>
-            @endif
-        @endauth
         <div class="flex flex-col px-4 mx-auto max-w-screen-lg ">
             <article class="mx-auto w-full max-w-screen-lg format format-sm sm:format-base lg:format-lg format-emerald">
                 {{-- <header class="mb-4 lg:mb-6 not-format">
                     <h1
                         class="text-lg font-bold sm:text-3xl sm:font-extrabold leading-tight text-gray-900 mb-2 lg:mb-2 lg:text-4xl dark:text-white">
                         TENTANG RM UIN Maliki</h1>
-                    @auth
-                        @if (auth()->user()->isAdmin())
-                            <div class="flex gap-3 mb-2">
-                                <a href="{{ route('abouts.edit', $about) }}"
-                                    class=" flex space-x-1 text-yellow-400 hover:underline">
-                                    <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="1"
-                                            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                    </svg>
-                                    <span>Edit</span>
-                                </a>
-                            </div>
-                        @endif
-                    @endauth
                 </header> --}}
                 <div
                     class="grid grid-cols-2 sm:grid-cols-4 gap-1 not-format mt-10 mb-10 mx-auto sm:divide-x border max-w-screen-lg">

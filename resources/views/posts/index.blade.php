@@ -21,8 +21,8 @@
                 <div class="max-h-screen overflow-y-auto basis-3/4" style="scrollbar-width:none">
                     <div class="gap-5 md:columns-2 xl:columns-2 basis-3/4 [&>article:not(:first-child)]:mt-5" >
                         @forelse ($posts as $post)
-                            <article class="relative bg-white group h-fit overflow-hidden ">
-                                <img src="{{ $post->image }}" alt="{{ $post->slug }}" class="object-cover max-h-60 w-full">
+                            <article class="relative bg-white group h-fit overflow-hidden">
+                                <img src="{{ $post->image }}" alt="{{ $post->slug }}" class="object-cover max-h-60 w-full group-hover:opacity-90 transition-opacity ease-in-out duration-300">
                                 <a href="{{ route('posts.show', $post) }}"
                                     class="absolute top-0 left-0 w-full h-full object-cover z-20"></a>
                                 <div class="flex flex-col gap-1 py-3">
@@ -54,20 +54,20 @@
                     </div>
                 </div>
 
-                <div class="xl:basis-1/3 xl:max-h-screen overflow-y-auto"  style="scrollbar-width:none">
+                <div class="xl:basis-1/3 ">
                     <div class="bg-white px-3">
                         <h2 class="text-center sm:text-start uppercase text-lg font-bold text-red-600 mb-5">BERITA POPULER
                         </h2>
     
-                        <div class="flex flex-col gap-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-x-5 gap-y-2 xl:max-h-[93vh] overflow-y-auto"  style="scrollbar-width:none">
                             @forelse ($posts_populer as $post_populer)
-                                <article class="relative flex gap-2">
+                                <article class="relative flex gap-2 group">
                                     <img src="{{ $post_populer->image }}" alt="{{ $post_populer->slug }}"
-                                        class="w-32 aspect-video object-cover rounded-lg">
+                                        class="w-32 aspect-video object-cover rounded-lg group-hover:opacity-90 transition-opacity ease-in-out duration-300">
                                     <a href="{{ route('posts.show', $post_populer) }}"
                                         class="absolute top-0 left-0 w-full h-full"></a>
                                     <div class="flex flex-col">
-                                        <h2 class="font-semibold line-clamp-2">{{ $post_populer->tittle }}</h2>
+                                        <h2 class="font-semibold line-clamp-2 group-hover:text-yellow-600 transition-colors ease-in-out duration-300">{{ $post_populer->tittle }}</h2>
                                         <div class="flex">
                                             <span class="my-auto">
                                                 <svg class="w-5 h-5 text-gray-500" aria-hidden="true"
@@ -94,7 +94,7 @@
             
         </section>
 
-        <section class="max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto mt-20">
+        <section class="max-w-md sm:max-w-xl md:max-w-4xl xl:max-w-6xl mx-auto mt-16">
             <h2 class="text-center sm:text-start uppercase text-lg font-bold text-red-600 mb-5">Kategori</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 @foreach ($member_categories as $member_category)

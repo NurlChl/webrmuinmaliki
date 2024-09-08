@@ -13,7 +13,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::query()->latest()->paginate(20);
+        $faculties = Faculty::query()->latest()->paginate(10);
 
         return view('faculties.index', [
             'faculties' => $faculties,
@@ -73,7 +73,7 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        $faculties = Faculty::query()->latest()->paginate(20);
+        $faculties = Faculty::query()->latest()->paginate(10);
 
         return view('faculties.index', [
 

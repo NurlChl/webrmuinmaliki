@@ -1,14 +1,13 @@
 <x-app-layout>
 
     @slot('tittle', 'Anggota')
-
+    @vite('resources/css/3dgalleries.css')
 
     <x-side-nav>
-        <section class="bg-white dark:bg-gray-900">
+        <section class=" -translate-y-6">
             <div class=" mx-auto max-w-screen-xl rounded-tr-lg rounded-tl-lg overflow-hidden">
                 <div class="custom3d-slide">
-
-                    <div class="banner">
+                    <div class="banner max-h-[60vh] lg:max-h-full">
                         <div class="slider" style="--quantity: {{ $totalGalleries }}">
                             @foreach ($galleries as $gallery)
                                 <div class="item" style="--position: {{ $loop->iteration }}"><img
@@ -16,10 +15,10 @@
                             @endforeach
                         </div>
                         <div class="content">
-                            <h1 data-content="KEGIATAN">
+                            <h1 data-content="KEGIATAN" class="hidden md:block">
                                 KEGIATAN
                             </h1>
-                            <div class="author">
+                            <div class="author hidden md:block">
                                 <h2>RM</h2>
                                 <p><b>UIN Maliki</b></p>
                                 <p>

@@ -41,8 +41,8 @@ class RuleRequest extends FormRequest
             'name.min' => 'Nama minimal 3 karakter.',
             'name.max' => 'Nama melebihi batas maksimal.',
 
-            'perios.required' => 'Tahun tidak boleh kosong.',
-            'perios.integer' => 'Tahun harus angka.',
+            'period.required' => 'Tahun tidak boleh kosong.',
+            'period.integer' => 'Tahun harus angka.',
             
             'file.required' => 'File wajib diisi.',
             'file.file' => 'File tidak valid.',

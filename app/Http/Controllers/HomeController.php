@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Post;
+use App\Models\Rule;
 use App\Models\RuleCategory;
 use Illuminate\Http\Request;
 
@@ -18,26 +19,17 @@ class HomeController extends Controller
         $carousels = Post::query()->orderBy('views', 'desc')->limit(5)->get();
         $posts = Post::query()->latest()->limit(10)->get();
         $galleries = Gallery::query()->latest()->limit(10)->get();
+        $ruleCategories = Rule::query()->latest()->limit(15)->get();
 
-        $ruleCategories = RuleCategory::with(['rules' => function ($query) {
-            $query->latest()->limit(3);
-        }])->get();
+        $ruleByCategory = $ruleCategories->groupBy(function ($post) {
+            return $post->ruleCategory->name; 
+        });
 
-        // Mengubah struktur data untuk dikirim ke view
-        $rulesByCategory = [];
-        foreach ($ruleCategories as $ruleCategory) {
-
-            if ($ruleCategory->rules->isNotEmpty()) {
-                $rulesByCategory[$ruleCategory->name] = $ruleCategory->rules;
-            }
-        }
-
-        // dd($rulesByCategory);
 
         return view('home', [
             'posts' => $posts,
             'carousels' => $carousels,
-            'rulesByCategory' => $rulesByCategory,
+            'rulesByCategory' => $ruleByCategory,
             'galleries' => $galleries,
             'totalGalleries' => $galleries->count(),
 

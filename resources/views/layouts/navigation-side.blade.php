@@ -60,7 +60,7 @@
                                 stroke-width="1"
                                 d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
                         </svg>
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap">Postingan</span>
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap">Berita</span>
                         <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -73,12 +73,12 @@
                         <li>
                             <a href="{{ route('posts.create') }}"
                                 class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('posts.create') ? 'bg-gray-100' : '' }}">Tambah
-                                Postingan</a>
+                                Berita</a>
                         </li>
                         <li>
                             <a href="{{ route('posts.dashboard') }}"
                                 class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('posts.dashboard') ? 'bg-gray-100' : '' }}">Kelola
-                                Postingan</a>
+                                Berita</a>
                         </li>
                     </ul>
                 </li>
@@ -200,10 +200,6 @@
                         </svg>
 
                         <span class="flex-1 ml-3 whitespace-nowrap">Aspirasi</span>
-                        <span
-                            class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">
-                            6
-                        </span>
                     </a>
                 </li>
                 <li>
@@ -218,10 +214,6 @@
                         </svg>
 
                         <span class="flex-1 ml-3 whitespace-nowrap">Usulan</span>
-                        <span
-                            class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">
-                            6
-                        </span>
                     </a>
                 </li>
 
@@ -251,15 +243,52 @@
 
                         <li>
                             <a href="{{ route('faculties.index') }}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('faculties.index') ? 'bg-gray-100' : '' }}">Fakultas</a>
+                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('faculties*') ? 'bg-gray-100' : '' }}">Fakultas</a>
                         </li>
                         <li>
                             <a href="{{ route('rule_categories.index') }}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('rule_categories.index') ? 'bg-gray-100' : '' }}">Peraturan</a>
+                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('rule_categories*') ? 'bg-gray-100' : '' }}">Peraturan</a>
                         </li>
                         <li>
                             <a href="{{ route('member_categories.index') }}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('member_categories.index') ? 'bg-gray-100' : '' }}">Anggota</a>
+                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('member_categories*') ? 'bg-gray-100' : '' }}">Anggota</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button type="button"
+                        class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
+                        aria-controls="dropdown-pages-about" data-collapse-toggle="dropdown-pages-about">
+                       
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('abouts*') ? 'text-gray-900' : '' }}" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
+                                d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" />
+                        </svg>
+
+
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap">Tentang</span>
+                        <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <ul id="dropdown-pages-about"
+                        class="{{ request()->routeIs('abouts*') ? 'block' : 'hidden' }} py-2 space-y-2">
+                        <li>
+                            <a href="{{ route('abouts.create') }}"
+                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 transition rounded-lg duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('abouts.create') ? 'bg-gray-100' : '' }}">Tambah
+                                Tentang</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('abouts.dashboard') }}"
+                                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->routeIs('abouts.dashboard') ? 'bg-gray-100' : '' }}">Kelola
+                                Tentang</a>
                         </li>
                     </ul>
                 </li>
@@ -305,9 +334,9 @@
             <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
                 <li>
                     <a href="{{ route('abouts.create') }}"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 group {{ request()->routeIs('abouts.create') ? 'bg-gray-100' : '' }}">
                         <svg aria-hidden="true"
-                            class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 {{ request()->routeIs('abouts*') ? 'text-gray-900' : '' }}"
                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                             <path fill-rule="evenodd"

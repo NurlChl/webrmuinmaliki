@@ -88,8 +88,8 @@
                                                         class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
                                                         <button data-modal-hide="create-modal" type="submit"
                                                             class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Simpan</button>
-                                                        <button data-modal-hide="create-modal" type="button"
-                                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-emerald-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">Batal</button>
+                                                        <a href="{{ route('member_categories.index') }}" data-modal-hide="create-modal" type="button"
+                                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 cursor-pointer focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-emerald-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400  dark:hover:text-white dark:hover:bg-gray-700">Batal</a>
                                                     </div>
                                                 </form>
                                                 <!-- Modal body -->
@@ -117,7 +117,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($member_categories as $member_category)
+                            @forelse ($memberCategories as $member_category)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 whitespace-nowrap">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                         {{ $member_category->name }}
@@ -147,6 +147,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="mt-8 px-5 mb-2">
+                        {{ $memberCategories->links() }}
+                    </div>
                 </div>
 
                 <div class="md:basis-1/3 w-full">
@@ -168,11 +171,35 @@
                         </h2>
                         <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
                             <div class="py-5 border-b border-gray-200 dark:border-gray-700">
-                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah kategori anggota, klik
-                                    tombol
-                                    di pojok kanan atas di dalam tabel. Lalu isi dan lengkapi semua yang harus diisi.
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk menambah Kategori anggota,
+                                    klik tombol
+                                    tambah (warna hijau) di pojok kanan atas di dalam tabel. Lalu isi dan lengkapi semua
+                                    yang harus diisi.
                                     Pastikan anda
                                     mengisi dengan benar dan jangan lupa cek kembali.</p>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-heading-3">
+                            <button type="button"
+                                class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
+                                data-accordion-target="#accordion-flush-body-3" aria-expanded="true"
+                                aria-controls="accordion-flush-body-3">
+                                <span class="text-start">Gimana cara edit kategori anggota?</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                            <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk mengedit kategori anggota,
+                                    klik tombol
+                                    edit pada kategori anggota yang ingin di edit pada tabel. Lalu klik tombol edit
+                                    (warna kuning) di
+                                    pojok kanan atas tabel dan isi semua yang harus diisi.
+                                    Pastikan anda mengisi dengan benar dan jangan lupa cek kembali.</p>
                             </div>
                         </div>
 

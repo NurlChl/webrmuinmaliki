@@ -117,7 +117,7 @@
                 </div>
 
 
-                <div class="mt-8 p-2 sm:p-5">
+                <div class="p-2 sm:p-5">
                     {{ $members->links() }}
                 </div>
             </div>

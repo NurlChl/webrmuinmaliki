@@ -19,11 +19,10 @@ class AspirationController extends Controller
         $aspirations = Aspiration::query()
             ->with([
                 'faculty' => fn($query) => $query->select(['id', 'name', 'color']),
-                'aspirationType' => fn($query) => $query->select(['id', 'name'])
-
+                'aspirationType' => fn($query) => $query->select(['id', 'name']),
             ])
             ->latest()
-            ->paginate(10);
+            ->paginate(9);
 
         $count = $aspirations->total();
 

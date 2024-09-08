@@ -13,11 +13,11 @@ class MemberCategoryController extends Controller
      */
     public function index()
     {
-        $memberCategories = MemberCategory::query()->latest()->paginate(20);
+        $memberCategories = MemberCategory::query()->latest()->paginate(10);
 
         return view('member_categories.index', [
 
-            'member_categories' => $memberCategories,
+            'memberCategories' => $memberCategories,
 
             'member_category' => new MemberCategory(),
             'page_meta' => [
@@ -72,11 +72,11 @@ class MemberCategoryController extends Controller
      */
     public function edit(MemberCategory $memberCategory)
     {
-        $memberCategories = MemberCategory::query()->latest()->paginate(20);
+        $memberCategories = MemberCategory::query()->latest()->paginate(10);
 
         return view('member_categories.index', [
 
-            '$member_categories' => $memberCategories,
+            'memberCategories' => $memberCategories,
 
             'member_category' => $memberCategory,
             'page_meta' => [

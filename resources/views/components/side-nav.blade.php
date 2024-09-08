@@ -11,6 +11,9 @@
             request()->routeIs('abouts.edit') ||
             request()->routeIs('galleries.create') ||
             request()->routeIs('galleries.edit') ||
+            request()->routeIs('aspirations.index') ||
+            request()->routeIs('recommendations.index') ||
+            request()->routeIs('abouts.dashboard') ||
             request()->routeIs('dashboard');
     @endphp
 

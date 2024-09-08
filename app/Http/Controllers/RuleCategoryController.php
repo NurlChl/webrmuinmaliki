@@ -17,14 +17,14 @@ class RuleCategoryController extends Controller
 
         return view('rule_categories.index', [
 
-            'rule_categories' => $ruleCategories,
+            'ruleCategories' => $ruleCategories,
 
             'rule_category' => new RuleCategory(),
             'page_meta' => [
                 'title' => 'Kategori Peraturan',
                 'method' => 'post',
                 'url' => route('rule_categories.store'),
-            ]
+            ],
 
         ]);
     }
@@ -34,7 +34,7 @@ class RuleCategoryController extends Controller
      */
     public function create()
     {
-        return view('member_categories.index', [
+        return view('rule_categories.index', [
 
             'rule_category' => new RuleCategory(),
             'page_meta' => [
@@ -76,7 +76,7 @@ class RuleCategoryController extends Controller
 
         return view('rule_categories.index', [
 
-            'rule_categories' => $ruleCategories,
+            'ruleCategories' => $ruleCategories,
 
             'rule_category' => $ruleCategory,
             'page_meta' => [

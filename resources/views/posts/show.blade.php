@@ -5,7 +5,7 @@
 
     <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div class="flex flex-col px-4 mx-auto max-w-screen-xl ">
-            <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue">
+            <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-emerald">
                 <header class="mb-4 lg:mb-6 not-format">
                     <h1
                         class="text-lg font-bold sm:text-3xl sm:font-extrabold leading-tight text-gray-900 mb-2 lg:mb-2 lg:text-4xl dark:text-white">
@@ -106,7 +106,7 @@
                                         bagikan ke temanmu:</label>
                                     <div class="relative mb-4">
                                         <input id="course-url" type="text"
-                                            class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
                                             value="{{ url()->current() }}" disabled readonly>
                                         <button data-copy-to-clipboard-target="course-url"
                                             data-tooltip-target="tooltip-course-url"
@@ -120,7 +120,7 @@
                                                 </svg>
                                             </span>
                                             <span id="success-icon-course-url" class="hidden items-center">
-                                                <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500"
+                                                <svg class="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-500"
                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 16 12">
                                                     <path stroke="currentColor" stroke-linecap="round"
@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
                                     <button type="button" data-modal-hide="course-modal"
-                                        class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
+                                        class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-emerald-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
                                 </div>
                             </div>
                         </div>

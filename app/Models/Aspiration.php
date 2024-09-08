@@ -29,7 +29,7 @@ class Aspiration extends Model
 
     public function aspirationType (): BelongsTo
     {
-        return $this->belongsTo(AspirationType::class);
+        return $this->belongsTo(AspirationType::class, 'type_id');
     }
     
 }

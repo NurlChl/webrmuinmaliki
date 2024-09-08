@@ -181,22 +181,9 @@
 
                                         <td class="px-4 py-3">{{ $loop->iteration }}</td>
 
-                                        <td class="px-4 py-3 font-medium max-w-md text-gray-900 ">
-                                            <span class="sm:hidden"
-                                                data-popover-target="popover-rule-name-mobile-{{ $loop->iteration }}">{{ Str::limit($rule->name, 20) }}</span>
-                                            <span class="hidden sm:block"
+                                        <td class="px-4 py-3 font-medium min-w-56 max-w-xs text-gray-900 ">
+                                            <span class="line-clamp-3"
                                                 data-popover-target="popover-rule-name-{{ $loop->iteration }}">{{ $rule->name }}</span>
-
-
-                                            <div data-popover id="popover-rule-name-mobile-{{ $loop->iteration }}"
-                                                role="tooltip"
-                                                class="absolute z-10 invisible inline-block max-w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 ">
-                                                <div class="px-3 py-2">
-                                                    <p>{{ $rule->name }}</p>
-                                                </div>
-                                                <div data-popper-arrow></div>
-                                            </div>
-
 
                                             <div data-popover id="popover-rule-name-{{ $loop->iteration }}"
                                                 role="tooltip"
@@ -209,7 +196,7 @@
                                         </td>
 
                                         <td class="px-4 py-3">{{ $rule->period }}</td>
-                                        <td class="px-4 py-3">{{ $rule->ruleCategory->name }}</td>
+                                        <td class="px-4 py-3 whitespace-nowrap">{{ $rule->ruleCategory->name }}</td>
                                         <td class="px-2 sm:px-4 py-3">
                                             {{-- <img src="{{ Storage::url($rule->file) }}" alt="{{ $rule->name }}"
                                                     class=" h-10 w-10 rounded-full sm:rounded-none sm:w-20 sm:h-20 md:w-36 md:h-36 object-cover"> --}}
@@ -286,7 +273,7 @@
                     </div>
                 </form>
 
-                <div class="mt-8 p-2 sm:p-5">
+                <div class="p-2 sm:p-5">
                     {{ $rules->links() }}
                 </div>
             </div>

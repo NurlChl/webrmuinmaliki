@@ -1,8 +1,9 @@
 <x-app-layout>
     @slot('tittle', 'Home')
+    @vite('resources/css/3dgalleries.css')
 
     <x-hero-section imageContent="{{ url('/') }}/logo/uin.jpeg">selamat datang di</x-hero-section>
-    <x-container class="flex flex-col mx-auto max-w-3xl lg:w-full lg:max-w-7xl bg-white p-5">
+    <x-container class="flex flex-col mx-auto max-w-3xl lg:w-full md:mt-10 lg:max-w-7xl bg-white p-5">
         <div class="flex flex-col w-full lg:flex-row gap-10 mx-auto">
             <section class="max-w-screen-md basis-3/4 flex flex-col gap-7 sm:gap-10 w-full">
 
@@ -22,7 +23,7 @@
                                             class="absolute top-0 left-0 w-full h-full group">
                                             <div
                                                 class="bg-white bg-opacity-90 p-3 mx-auto -translate-y-full group-hover:translate-y-0 transition-all duration-300">
-                                                <h2 class="font-semibold text-lg text-center line-clamp-2">
+                                                <h2 class="font-semibold text-sm sm:text-lg text-center line-clamp-2">
                                                     {{ $carousel->tittle }}</h2>
                                             </div>
                                         </a>
@@ -81,11 +82,11 @@
                                 <a href="{{ route('posts.show', $post) }}">
                                     <h2
                                         class="text-lg font-semibold border-l-[3px] border-amber-500 pl-3 group-hover:text-emerald-600 transition ease-in-out duration-300 line-clamp-3">
-                                        {{ str()->limit($post->tittle, 150) }}</h2>
+                                        {{ $post->tittle }}</h2>
                                 </a>
                                 <div class="pl-4">
                                     <span
-                                        class="text-sm font-semibold text-emerald-900">{{ $post->created_at->format('d-m-Y') }}</span>
+                                        class="text-sm font-semibold text-emerald-900">{{ $post->created_at->format('d-m-Y') }} / <span class="text-yellow-600 uppercase">{{ $post->member_category->name }}</span></span>
                                 </div>
                                 <p class="text-base pl-4 text-zinc-600 line-clamp-5">
                                     {{ str_replace('&nbsp;', ' ', $post->excerpt) }}
@@ -197,16 +198,18 @@
                                 <div class="flex flex-row gap-5 relative bg-slate-100 py-3 px-5 rounded-md group">
                                     <a href="{{ $rule->file }}" target="_blank"
                                         class="absolute top-0 left-0 w-full h-full"></a>
-                                    <svg class="w-6 h-6 text-amber-400 group-hover:text-amber-500 transition-all ease-in-out duration-300"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M6 16v-3h.375a.626.626 0 0 1 .625.626v1.749a.626.626 0 0 1-.626.625H6Zm6-2.5a.5.5 0 1 1 1 0v2a.5.5 0 0 1-1 0v-2Z" />
-                                        <path fill-rule="evenodd"
-                                            d="M11 7V2h7a2 2 0 0 1 2 2v5h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2H3a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h6a2 2 0 0 0 2-2Zm7.683 6.006 1.335-.024-.037-2-1.327.024a2.647 2.647 0 0 0-2.636 2.647v1.706a2.647 2.647 0 0 0 2.647 2.647H20v-2h-1.335a.647.647 0 0 1-.647-.647v-1.706a.647.647 0 0 1 .647-.647h.018ZM5 11a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.376A2.626 2.626 0 0 0 9 15.375v-1.75A2.626 2.626 0 0 0 6.375 11H5Zm7.5 0a2.5 2.5 0 0 0-2.5 2.5v2a2.5 2.5 0 0 0 5 0v-2a2.5 2.5 0 0 0-2.5-2.5Z"
-                                            clip-rule="evenodd" />
-                                        <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z" />
-                                    </svg>
+                                    <div>
+                                        <svg class=" w-6 h-6 text-amber-400 group-hover:text-amber-500 transition-all ease-in-out duration-300"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M6 16v-3h.375a.626.626 0 0 1 .625.626v1.749a.626.626 0 0 1-.626.625H6Zm6-2.5a.5.5 0 1 1 1 0v2a.5.5 0 0 1-1 0v-2Z" />
+                                            <path fill-rule="evenodd"
+                                                d="M11 7V2h7a2 2 0 0 1 2 2v5h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2H3a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h6a2 2 0 0 0 2-2Zm7.683 6.006 1.335-.024-.037-2-1.327.024a2.647 2.647 0 0 0-2.636 2.647v1.706a2.647 2.647 0 0 0 2.647 2.647H20v-2h-1.335a.647.647 0 0 1-.647-.647v-1.706a.647.647 0 0 1 .647-.647h.018ZM5 11a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.376A2.626 2.626 0 0 0 9 15.375v-1.75A2.626 2.626 0 0 0 6.375 11H5Zm7.5 0a2.5 2.5 0 0 0-2.5 2.5v2a2.5 2.5 0 0 0 5 0v-2a2.5 2.5 0 0 0-2.5-2.5Z"
+                                                clip-rule="evenodd" />
+                                            <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z" />
+                                        </svg>
+                                    </div>
                                     <p
                                         class="text-sm font-semibold group-hover:text-emerald-600 transition ease-in-out duration-300">
                                         {{ $rule->name }}</p>
@@ -250,7 +253,7 @@
         @if ($totalGalleries > 2)
             <div class="custom3d-slide mt-20 rounded-lg">
 
-                <div class="banner h-fit">
+                <div class="banner max-h-[60vh] lg:max-h-full">
                     <div class="slider" style="--quantity: {{ $totalGalleries }}">
                         @foreach ($galleries as $gallery)
                             <div class="item" style="--position: {{ $loop->iteration }}"><img

@@ -143,7 +143,7 @@
                                 @endif
 
                                 <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('PROFILE') }}
+                                    {{ __('PROFIL') }}
                                 </x-dropdown-link>
 
                                 <!-- Authentication -->
@@ -320,7 +320,7 @@
                 <li>
                     <a href="{{ route('posts.index') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('posts.index') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('posts*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }  {{ request()->routeIs('posts*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -334,7 +334,7 @@
                 <li>
                     <a href="{{ route('members.index') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('members.index') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('members*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900   {{ request()->routeIs('members*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
@@ -348,13 +348,13 @@
                 <li>
                     <a href="{{ route('rules.index') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('rules.index') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('rules*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 {{ request()->routeIs('rules*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
-                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
+                                d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
                         </svg>
-
 
                         <span class="ml-3">PERATURAN</span>
                     </a>
@@ -362,12 +362,14 @@
                 <li>
                     <a href="{{ route('aspirations.create') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('aspirations.create') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('aspirations*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900   {{ request()->routeIs('aspirations*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
-                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
+                                d="M11 9H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6m0-6v6m0-6 5.419-3.87A1 1 0 0 1 18 5.942v12.114a1 1 0 0 1-1.581.814L11 15m7 0a3 3 0 0 0 0-6M6 15h3v5H6v-5Z" />
                         </svg>
+
 
 
                         <span class="ml-3">ASPIRASI</span>
@@ -376,27 +378,13 @@
                 <li>
                     <a href="{{ route('recommendations.create') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('recommendations.create') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('recommendations*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900   {{ request()->routeIs('recommendations*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
-                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
+                                d="M9 9a3 3 0 0 1 3-3m-2 15h4m0-3c0-4.1 4-4.9 4-9A6 6 0 1 0 6 9c0 4 4 5 4 9h4Z" />
                         </svg>
-
-
-                        <span class="ml-3">USULAN PERATURAN</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('recommendations.create') }}"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('recommendations.create') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('recommendations*') ? 'text-gray-900' : '' }}"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
-                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
-                        </svg>
-
 
                         <span class="ml-3">USULAN PERATURAN</span>
                     </a>
@@ -404,14 +392,13 @@
                 <li>
                     <a href="{{ route('abouts.index') }}"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('abouts.create') ? 'bg-gray-100' : '' }}">
-                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('abouts*') ? 'text-gray-900' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900   {{ request()->routeIs('abouts*') ? 'text-gray-900' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
-                                d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1"
+                                d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-
-
                         <span class="ml-3">Tentang</span>
                     </a>
                 </li>
@@ -440,7 +427,7 @@
                         <a href="{{ route('profile.edit') }}"
                             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('profile.edit') ? 'bg-gray-100' : '' }}">
 
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('profile*') ? 'text-gray-900' : '' }}"
+                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }  {{ request()->routeIs('profile*') ? 'text-gray-900' : '' }}"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
@@ -448,7 +435,7 @@
                             </svg>
 
 
-                            <span class="ml-3">PROFILE</span>
+                            <span class="ml-3">PROFIL</span>
                         </a>
                     </li>
 
@@ -474,34 +461,56 @@
                         </li>
                     </form>
                 @else
-                    <li>
-                        <a href="{{ route('login') }}"
-                            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('login') ? 'bg-gray-100' : '' }}">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('login*') ? 'text-gray-900' : '' }}"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
-                            </svg>
+                    <div class="absolute bottom-0 left-0">
 
-                            <span class="ml-3">LOGIN</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}"
-                            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('register') ? 'bg-gray-100' : '' }}">
-                            <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }dark:text-gray-400 dark:group-hover:text-white {{ request()->routeIs('register*') ? 'text-gray-900' : '' }}"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="none" viewBox="0 0 24 24">
+                        <button id="dropdownLogReg" data-dropdown-toggle="dropdownLoginRegis" data-dropdown-placement="top"
+                            class=" me-2 mb-2 md:mb-0 text-gray-800 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                            type="button"><svg class="w-2 h-2 text-gray-800" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1"
-                                    d="M19 7h1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h11.5M7 14h6m-6 3h6m0-10h.5m-.5 3h.5M7 7h3v3H7V7Z" />
+                                    stroke-width="2" d="M9 5 5 1 1 5" />
                             </svg>
+                        </button>
 
-                            <span class="ml-3">REGISTER</span>
-                        </a>
-                    </li>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownLoginRegis"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLogReg">
+                                <li>
+                                    <a href="{{ route('login') }}"
+                                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('login') ? 'bg-gray-100' : '' }}">
+        
+                                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900   {{ request()->routeIs('login*') ? 'text-gray-900' : '' }}"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1"
+                                                d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2" />
+                                        </svg>
+        
+        
+                                        <span class="ml-3">LOGIN</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}"
+                                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('register') ? 'bg-gray-100' : '' }}">
+        
+                                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400  transition duration-75  group-hover:text-gray-900 }  {{ request()->routeIs('register*') ? 'text-gray-900' : '' }}"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1"
+                                                d="M18 5V4a1 1 0 0 0-1-1H8.914a1 1 0 0 0-.707.293L4.293 7.207A1 1 0 0 0 4 7.914V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 3v4a1 1 0 0 1-1 1H4m11.383.772 2.745 2.746m1.215-3.906a2.089 2.089 0 0 1 0 2.953l-6.65 6.646L9 17.95l.739-3.692 6.646-6.646a2.087 2.087 0 0 1 2.958 0Z" />
+                                        </svg>
+        
+        
+                                        <span class="ml-3">REGISTER</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 @endauth
 
 

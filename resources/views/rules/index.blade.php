@@ -7,7 +7,8 @@
         <div class="mx-auto max-w-screen-xl lg:px-12">
             <!-- Start coding here -->
             <div class="bg-white pt-5 relative shadow-md sm:rounded-lg overflow-hidden ">
-                <div class="flex flex-col md:flex-row items-end justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 mb-5">
+                <div
+                    class="flex flex-col md:flex-row items-end justify-between space-y-3 md:space-y-0 md:space-x-4 p-4 mb-5">
                     <div class="w-full md:w-1/2">
                         <form class="flex items-center">
                             @if (request('category'))
@@ -97,7 +98,7 @@
                             <tr>
                                 <th scope="col" class="px-4 py-3">No.</th>
                                 <th scope="col" class="px-4 py-3">Nama</th>
-                                <th scope="col" class="px-4 py-3">Periode</th>
+                                <th scope="col" class="px-4 py-3">Tahun</th>
                                 <th scope="col" class="px-4 py-3">Kategori</th>
                                 <th scope="col" class="px-4 py-3">Dokumen</th>
                             </tr>
@@ -108,22 +109,9 @@
 
                                     <td class="px-4 py-3">{{ $loop->iteration }}</td>
 
-                                    <td class="px-4 py-3 font-medium max-w-md text-gray-900 ">
-                                        <span class="sm:hidden"
-                                            data-popover-target="popover-rule-name-mobile-{{ $loop->iteration }}">{{ Str::limit($rule->name, 20) }}</span>
-                                        <span class="hidden sm:block"
+                                    <td class="px-4 py-3 font-medium min-w-56 max-w-xs text-gray-900">
+                                        <span class="line-clamp-3"
                                             data-popover-target="popover-rule-name-{{ $loop->iteration }}">{{ $rule->name }}</span>
-
-
-                                        <div data-popover id="popover-rule-name-mobile-{{ $loop->iteration }}"
-                                            role="tooltip"
-                                            class="absolute z-10 invisible inline-block max-w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 ">
-                                            <div class="px-3 py-2">
-                                                <p>{{ $rule->name }}</p>
-                                            </div>
-                                            <div data-popper-arrow></div>
-                                        </div>
-
 
                                         <div data-popover id="popover-rule-name-{{ $loop->iteration }}" role="tooltip"
                                             class="absolute z-10 invisible inline-block max-w-md text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0">
@@ -135,7 +123,7 @@
                                     </td>
 
                                     <td class="px-4 py-3">{{ $rule->period }}</td>
-                                    <td class="px-4 py-3">{{ $rule->ruleCategory->name }}</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">{{ $rule->ruleCategory->name }}</td>
                                     <td class="px-2 sm:px-4 py-3">
                                         {{-- <img src="{{ Storage::url($rule->file) }}" alt="{{ $rule->name }}"
                                                 class=" h-10 w-10 rounded-full sm:rounded-none sm:w-20 sm:h-20 md:w-36 md:h-36 object-cover"> --}}
@@ -174,7 +162,7 @@
                     </table>
                 </div>
 
-                <div class="mt-8 p-2 sm:p-5">
+                <div class="p-2 sm:p-5">
                     {{ $rules->links() }}
                 </div>
             </div>

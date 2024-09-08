@@ -62,7 +62,7 @@ class PostController extends Controller
             'post' => new Post(),
             'member_categories' => MemberCategory::all(),
             'page_meta' => [
-                'title' => 'Tambah Postingan',
+                'title' => 'Tambah Berita',
                 'method' => 'post',
                 'url' => route('posts.store'),
             ]
@@ -89,7 +89,7 @@ class PostController extends Controller
             ...['image' => $file->store('images/posts')],
         ]);
 
-        return to_route('posts.index')->with('success', 'Postingan berhasil ditambah');
+        return to_route('posts.index')->with('success', 'Berita berhasil ditambah');
     }
 
     /**
@@ -124,7 +124,7 @@ class PostController extends Controller
             'post' => $post,
             'member_categories' => MemberCategory::all(),
             'page_meta' => [
-                'title' => 'Edit Postingan',
+                'title' => 'Edit Berita',
                 'method' => 'put',
                 'url' => route('posts.update', $post),
             ]
@@ -156,7 +156,7 @@ class PostController extends Controller
 
         ]);
 
-        return to_route('posts.index')->with('success', 'Postingan berhasil diubah');
+        return to_route('posts.index')->with('success', 'Berita berhasil diubah');
     }
 
     /**
@@ -166,7 +166,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return back()->with('success', 'Postingan berhasil dihapus');
+        return back()->with('success', 'Berita berhasil dihapus');
     }
 
 

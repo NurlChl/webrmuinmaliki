@@ -17,7 +17,7 @@ class RecommendationController extends Controller
         $aspirations = Recommendation::query()
                                 ->with('faculty', fn ($query) => $query->select(['id', 'name', 'color']))
                                 ->latest()
-                                ->paginate(10);
+                                ->paginate(9);
         
 
         return view('recommendations.index', [

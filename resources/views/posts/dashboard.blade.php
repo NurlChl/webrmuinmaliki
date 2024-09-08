@@ -119,22 +119,8 @@
                                         <td class="px-4 py-3 max-w-xs">
                                             <div class="font-medium text-gray-900 text-base">
                                                 <a href="{{ route('posts.show', $post) }}"
-                                                    class="sm:hidden block whitespace-nowrap text-ellipsis overflow-hidden"
-                                                    data-popover-target="popover-post-tittle-mobile-{{ $loop->iteration }}">{{ $post->tittle }}</a>
-                                                <a href="{{ route('posts.show', $post) }}"
-                                                    class="hidden sm:block whitespace-nowrap text-ellipsis overflow-hidden"
+                                                    class="block whitespace-nowrap text-ellipsis overflow-hidden"
                                                     data-popover-target="popover-post-tittle-{{ $loop->iteration }}">{{ $post->tittle }}</a>
-
-                                                <div data-popover
-                                                    id="popover-post-tittle-mobile-{{ $loop->iteration }}"
-                                                    role="tooltip"
-                                                    class="absolute z-10 invisible inline-block max-w-64 text-sm text-gray-500 transition-opacity delay-500 duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 ">
-                                                    <div class="px-3 py-2">
-                                                        <p>{{ $post->tittle }}</p>
-                                                    </div>
-                                                    <div data-popper-arrow></div>
-                                                </div>
-
 
                                                 <div data-popover id="popover-post-tittle-{{ $loop->iteration }}"
                                                     role="tooltip"
@@ -225,7 +211,7 @@
                 </form>
 
 
-                <div class="mt-8 p-2 sm:p-5">
+                <div class="p-2 sm:p-5">
                     {{ $posts->links() }}
                 </div>
             </div>
