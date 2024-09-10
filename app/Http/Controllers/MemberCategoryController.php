@@ -21,7 +21,7 @@ class MemberCategoryController extends Controller
 
             'member_category' => new MemberCategory(),
             'page_meta' => [
-                'title' => 'Kategori Anggota',
+                'title' => 'Kategori Organisasi',
                 'method' => 'post',
                 'url' => route('member_categories.store'),
             ]
@@ -38,7 +38,7 @@ class MemberCategoryController extends Controller
 
             'member_category' => new MemberCategory(),
             'page_meta' => [
-                'title' => 'Kategori Anggota',
+                'title' => 'Kategori Organisasi',
                 'method' => 'post',
                 'url' => route('member_categories.store'),
             ]
@@ -56,7 +56,7 @@ class MemberCategoryController extends Controller
 
         );
 
-        return back()->with('success', 'Kategori Anggota berhasil  ditambah');
+        return back()->with('success', 'Kategori Organisasi berhasil  ditambah');
     }
 
     /**
@@ -80,7 +80,7 @@ class MemberCategoryController extends Controller
 
             'member_category' => $memberCategory,
             'page_meta' => [
-                'title' => 'Edit Kategori Anggota',
+                'title' => 'Edit Kategori Organisasi',
                 'method' => 'put',
                 'url' => route('member_categories.update', $memberCategory),
             ]
@@ -99,7 +99,7 @@ class MemberCategoryController extends Controller
 
         ]);
 
-        return to_route('member_categories.index')->with('success',  'Kategori Anggota berhasil diubah');
+        return to_route('member_categories.index')->with('success',  'Kategori Organisasi berhasil diubah');
     }
 
     /**

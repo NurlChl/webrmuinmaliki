@@ -46,18 +46,16 @@
                                     class="absolute top-0 right-0 flex -translate-y-10 gap-1 group-hover:translate-y-0 transition-all ease-in-out delay-200 duration-500">
                                     <a href="{{ route('galleries.edit', $gallery) }}"
                                         class="px-5 py-1 bg-yellow-200 w-full">E</a>
-                                    <div class="px-5 py-1 bg-red-600 w-full cursor-pointer">
-                                        <form onsubmit="return confirm('Yakin hapus anggota ini?')"
-                                            action="{{ route('galleries.destroy', $gallery->id) }}" method="POST">
+                                    <form onsubmit="return confirm('Yakin hapus anggota ini?')"
+                                        action="{{ route('galleries.destroy', $gallery->id) }}" method="POST">
 
-                                            @method('DELETE')
-                                            @csrf
+                                        @method('DELETE')
+                                        @csrf
 
-                                            <button type="submit">
-                                                H
-                                            </button>
-                                        </form>
-                                    </div>
+                                        <button type="submit" class="px-5 py-1 bg-red-600 w-full">
+                                            H
+                                        </button>
+                                    </form>
                                 </div>
                                 <img class='object-contain w-full' src="{{ $gallery->image }}" alt="">
                             </div>

@@ -151,7 +151,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Isi
                                 Usulanmu</label>
                             <textarea name="body" id="body"
-                                class="@error('body') {{ $inputError }} @elseif (old('body') && !$errors->has('body')) {{ $inputValid }} @else {{ $inputFirst }} @enderror text-sm rounded-lg block w-full p-2.5"
+                                class="text-sm rounded-lg block w-full p-2.5 @error('body') {{ $inputError }} @elseif (old('body') && !$errors->has('body')) {{ $inputValid }} @else {{ $inputFirst }} @enderror"
                                 placeholder="Tulis usulanmu" required>{{ old('body', $aspiration->body) }}</textarea>
                             <x-input-error :messages="$errors->get('body')" />
                         </div>

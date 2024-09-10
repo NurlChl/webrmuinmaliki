@@ -131,16 +131,20 @@
                                         <div class="flex gap-5">
                                             <a href="{{ route('rule_categories.edit', $rule_category) }}"
                                                 class="font-medium text-yellow-300 hover:underline">Edit</a>
-                                            <form onsubmit="return confirm('Yakin hapus peraturan ini?')"
-                                                action="{{ route('rule_categories.destroy', $rule_category->id) }}"
+                                            <form action="{{ route('rule_categories.destroy', $rule_category->id) }}"
                                                 method="POST">
 
                                                 @method('DELETE')
                                                 @csrf
 
-                                                <button type="submit" class="font-medium text-red-600 hover:underline">
+                                                <button type="button" class="font-medium text-red-600 hover:underline"
+                                                    data-modal-target="popup-modal-delete"
+                                                    data-modal-toggle="popup-modal-delete">
                                                     Hapus
                                                 </button>
+                                                <x-popup-modal-delete id="popup-modal-delete"
+                                                    message="Anda yakin mau menghapus berita terpilih ini?"
+                                                    confirmText="Ya, saya setuju" cancelText="Batal" />
                                             </form>
                                         </div>
                                     </td>

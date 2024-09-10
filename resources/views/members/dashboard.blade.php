@@ -171,21 +171,6 @@
                                                                     class="block py-2 px-4 hover:bg-gray-100 ">Edit</a>
                                                             </li>
                                                         </ul>
-                                                        <div class="py-1">
-                                                            <form onsubmit="return confirm('Yakin hapus anggota ini?')"
-                                                                action="{{ route('members.destroy', $member->id) }}"
-                                                                method="POST"
-                                                                class="block text-sm text-gray-700 hover:bg-gray-100 ">
-
-                                                                @method('DELETE')
-                                                                @csrf
-
-                                                                <button type="submit"
-                                                                    class="py-2 px-4 w-full h-full text-start">
-                                                                    Delete
-                                                                </button>
-                                                            </form>
-                                                        </div>
                                                     </div>
                                                 </td>
                                             @endif

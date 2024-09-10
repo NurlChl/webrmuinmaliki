@@ -109,7 +109,7 @@
                             <x-input-error :messages="$errors->get('address')" />
                         </div>
 
-                        <div class="sm:col-span-1 w-full mx-auto">
+                        <div class="sm:col-span-2 w-full mx-auto">
                             <label for="telephone" :value="__('telephone')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Telp</label>
                             <div class="relative">
@@ -135,7 +135,7 @@
                             <label for="faculty_id" :value="__('faculty_id')"
                                 class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                             <select id="faculty_id" name="faculty_id"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500">
+                                class="@error('faculty_id') {{ $inputError }} @elseif (old('faculty_id') && !$errors->has('faculty_id')) {{ $inputValid }} @else {{ $inputFirst }} @enderror text-sm rounded-lg block w-full p-2.5">
                                 <option disabled>Pilih Fakultas</option>
                                 @foreach ($faculties as $faculty)
                                     <option value="{{ $faculty->id }}"
@@ -147,7 +147,7 @@
                             <x-input-error :messages="$errors->get('faculty_id')" />
                         </div>
 
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-1">
                             <label for="generation" :value="__('generation')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Angkatan</label>
                             <div class="relative">
@@ -176,7 +176,7 @@
                             <label for="body" :value="__('body')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pesan</label>
                             <textarea name="body" id="body"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+                                class="text-sm rounded-lg block w-full p-2.5 @error('body') {{ $inputError }} @elseif (old('body') && !$errors->has('body')) {{ $inputValid }} @else {{ $inputFirst }} @enderror"
                                 placeholder="Tulis pesanmu" required>{{ old('body', $aspiration->body) }}</textarea>
                             <x-input-error :messages="$errors->get('body')" />
                         </div>
@@ -189,7 +189,7 @@
                         tidak bisa diedit lagi.</p>
 
                     <button type="submit"
-                        class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-emerald-700 rounded-lg focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900 hover:bg-emerald-800">
+                        class="w-full items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-emerald-700 rounded-lg focus:ring-4 focus:ring-emerald-200 hover:bg-emerald-800">
                         Simpan
                     </button>
                 </form>

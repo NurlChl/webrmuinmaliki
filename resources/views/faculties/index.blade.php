@@ -151,17 +151,21 @@
                                         <div class="flex gap-5">
                                             <a href="{{ route('faculties.edit', $faculty) }}"
                                                 class="font-medium text-yellow-300 hover:underline">Edit</a>
-                                            <form onsubmit="return confirm('Yakin hapus anggota ini?')"
-                                                action="{{ route('faculties.destroy', $faculty->id) }}"
+                                            <form action="{{ route('faculties.destroy', $faculty->id) }}"
                                                 method="POST">
 
                                                 @method('DELETE')
                                                 @csrf
 
-                                                <button type="submit"
-                                                    class="font-medium text-red-600 hover:underline">
+                                                <button type="button"
+                                                    class="font-medium text-red-600 hover:underline"
+                                                    data-modal-target="popup-modal-delete"
+                                                    data-modal-toggle="popup-modal-delete">
                                                     Hapus
                                                 </button>
+                                                <x-popup-modal-delete id="popup-modal-delete"
+                                                    message="Anda yakin mau menghapus berita terpilih ini?"
+                                                    confirmText="Ya, saya setuju" cancelText="Batal" />
                                             </form>
                                         </div>
                                     </td>
@@ -217,7 +221,8 @@
                         <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
                             <div class="py-5 border-b border-gray-200 dark:border-gray-700">
                                 <p class="mb-2 text-gray-500 dark:text-gray-400">Untuk mengedit Fakultas, klik tombol
-                                    edit pada Fakultas yang ingin di edit pada tabel. Lalu klik tombol edit (warna kuning) di
+                                    edit pada Fakultas yang ingin di edit pada tabel. Lalu klik tombol edit (warna
+                                    kuning) di
                                     pojok kanan atas tabel dan isi semua yang harus diisi.
                                     Pastikan anda
                                     mengisi dengan benar dan jangan lupa cek kembali.</p>
