@@ -1,3 +1,4 @@
+<!-- Developed by Moh Nurul Cholil & Fitria Susanti, 2024 -->
 @php
     $rute =
         request()->routeIs('home') ||
@@ -21,6 +22,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Nurl_Chl & Fitriasnt__">
+    <meta name="description" content="Ini adalah website yang dikembangkan oleh Nurl_Chl & Fitriasnt__">
 
     <title>{{ isset($tittle) ? $tittle . ' / ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
     </title>

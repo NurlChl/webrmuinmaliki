@@ -67,7 +67,7 @@
                                     <a href="{{ route('posts.show', $post_populer) }}"
                                         class="absolute top-0 left-0 w-full h-full"></a>
                                     <div class="flex flex-col">
-                                        <h2 class="font-semibold line-clamp-2 group-hover:text-yellow-600 transition-colors ease-in-out duration-300">{{ $post_populer->tittle }}</h2>
+                                        <h2 class="font-semibold line-clamp-2 group-hover:text-emerald-600 transition-colors ease-in-out duration-300">{{ $post_populer->tittle }}</h2>
                                         <div class="flex">
                                             <span class="my-auto">
                                                 <svg class="w-5 h-5 text-gray-500" aria-hidden="true"
