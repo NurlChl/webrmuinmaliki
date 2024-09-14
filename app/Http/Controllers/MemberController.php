@@ -147,7 +147,7 @@ class MemberController extends Controller
 
             Storage::delete($member->image);
 
-            $file = $request->file('image')->store('image/posts');
+            $file = $request->file('image')->store('image/members');
         } else {
 
             $file = $member->image;

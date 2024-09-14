@@ -10,6 +10,7 @@
         request()->routeIs('members.category') ||
         request()->routeIs('rules.show') ||
         request()->routeIs('rules.index') ||
+        request()->routeIs('extracurriculars.index') ||
         request()->routeIs('aspirations.create') ||
         request()->routeIs('recommendations.create') ||
         request()->routeIs('abouts.index');

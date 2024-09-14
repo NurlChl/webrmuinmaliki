@@ -37,7 +37,6 @@
                             </article>
     
                         @empty
-    
                             <div class="px-4 py-3 text-center md:col-span-2 lg:col-span-2 overflow-hidden">
                                 <svg class="w-20 h-20 mx-auto text-gray-800 dark:text-white" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

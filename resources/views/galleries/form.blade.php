@@ -39,7 +39,7 @@
                                                     accept="image/*" required onchange="updateFileName()">
                                             </label>
                                         </div>
-                                        <p class="text-xs leading-5 text-gray-600">PNG, JPG, JPEG up to 2MB</p>
+                                        <p class="text-xs leading-5 text-gray-600">PNG, JPG, JPEG maksimal 2MB</p>
                                     </div>
                                 </div>
                             </div>

@@ -111,6 +111,9 @@
                         <x-nav-link :href="route('abouts.index')" :active="request()->routeIs('abouts*')">
                             {{ __('TENTANG') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('extracurriculars.index')" :active="request()->routeIs('extracurriculars.index*')">
+                            {{ __('UKM') }}
+                        </x-nav-link>
                     </div>
                 </div>
 

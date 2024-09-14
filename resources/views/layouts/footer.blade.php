@@ -1,6 +1,59 @@
 <footer class="bg-white border-t-2 border-zinc-100">
     <div class="mx-auto w-full max-w-screen-xl">
-        <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+        <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-3 lg:grid-cols-5">
+            <div class="col-span-2">
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">UKM</h2>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium grid grid-cols-2 gap-x-8">
+                    <li class="mb-4">
+                        <a href="#" class=" hover:underline">Simfoni FM</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Jhepret Club Fotografi</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">LKP2M</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">USPM Inovasi</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">KSR PMI</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Teater K2</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Unior</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Pramuka</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Seni Religius</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Taekwondo Indonesia</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">KOPMA Padang Bulan</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">KOMMUST</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">Satuan Resimen Mahasiswa</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">IPS NU Pagar Nusa</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">MAPALASKA</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="hover:underline">PSM Gema Gita Buana</a>
+                    </li>
+                </ul>
+            </div>
             <div>
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Dema F</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
@@ -64,7 +117,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex flex-col gap-2 justify-end md:items-end">
+            
+            <div class="lg:hidden flex flex-col gap-2 justify-end md:items-end">
                 <h2 class="text-xl sm:text-3xl font-bold text-start md:text-end uppercase">RM UIN Maliki</h2>
                 <p class="text-gray-500 text-start md:text-end text-xs">Developed by <span class="text-black">NurlChl</span> & <span class="text-black">Fitriasnt</span></p>
             </div>
