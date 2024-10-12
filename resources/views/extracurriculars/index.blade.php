@@ -8,7 +8,7 @@
                 @forelse ($extracurriculars as $extracurricular)
                     <div class="flex flex-col md:flex-row gap-10 p-2 sm:p-5 md:pl-10">
                         <div class="relative h-fit w-fit mx-auto">
-                            <img src="{{ $extracurricular->image }}" alt="{{ $extracurricular->name }}"
+                            <img src="{{ Storage::url($extracurricular->image)}}" alt="{{ $extracurricular->name }}"
                                 class="aspect-[5/6] object-cover rounded-xl max-w-56 sm:max-w-xs">
                             <span
                                 class="absolute top-10 -left-9 bg-yellow-300 px-2 py-1 rounded-md bg-opacity-85 max-w-48">{{ $extracurricular->leader_name }}</span>

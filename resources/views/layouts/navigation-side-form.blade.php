@@ -17,7 +17,7 @@
             <ul class="space-y-2">
                 <li>
                     <a href="{{ route('home') }}" class="flex items-center p-2">
-                        <img src=" {{ url('/') }}/logo/logorm.png" alt="logorm" class="w-24 mx-auto">
+                        <img src=" {{ Storage::url('logo/logorm.png')}} " alt="logorm" class="w-24 mx-auto">
                     </a>
                 </li>
                 <li>

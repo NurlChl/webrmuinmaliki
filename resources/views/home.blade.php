@@ -196,7 +196,7 @@
                         @forelse ($rulesByCategory as $ruleByCategory => $rules )
                             @forelse ($rules as $rule)
                                 <div class="flex flex-row gap-5 relative bg-slate-100 py-3 px-5 rounded-md group">
-                                    <a href="{{ $rule->file }}" target="_blank"
+                                    <a href="{{ Storage::url($rule->file)}}" target="_blank"
                                         class="absolute top-0 left-0 w-full h-full"></a>
                                     <div>
                                         <svg class=" w-6 h-6 text-amber-400 group-hover:text-amber-500 transition-all ease-in-out duration-300"
