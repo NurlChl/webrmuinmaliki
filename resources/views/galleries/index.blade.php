@@ -11,7 +11,7 @@
                         <div class="slider" style="--quantity: {{ $totalGalleries }}">
                             @foreach ($galleries as $gallery)
                                 <div class="item" style="--position: {{ $loop->iteration }}"><img
-                                        src="{{ $gallery->image }}" alt="slide"></div>
+                                        src="{{ Storage::url($gallery->image)}}" alt="slide"></div>
                             @endforeach
                         </div>
                         <div class="content">
@@ -57,7 +57,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                <img class='object-contain w-full' src="{{ $gallery->image }}" alt="">
+                                <img class='object-contain w-full' src="{{ Storage::url($gallery->image)}}" alt="">
                             </div>
                         @empty
                         @endforelse

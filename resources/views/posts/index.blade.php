@@ -22,7 +22,7 @@
                     <div class="gap-5 md:columns-2 xl:columns-2 basis-3/4 [&>article:not(:first-child)]:mt-5" >
                         @forelse ($posts as $post)
                             <article class="relative bg-white group h-fit overflow-hidden">
-                                <img src="{{ $post->image }}" alt="{{ $post->slug }}" class="object-cover max-h-60 w-full group-hover:opacity-90 transition-opacity ease-in-out duration-300">
+                                <img src="{{ Storage::url($post->image)}}" alt="{{ $post->slug }}" class="object-cover max-h-60 w-full group-hover:opacity-90 transition-opacity ease-in-out duration-300">
                                 <a href="{{ route('posts.show', $post) }}"
                                     class="absolute top-0 left-0 w-full h-full object-cover z-20"></a>
                                 <div class="flex flex-col gap-1 py-3">
@@ -61,7 +61,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-x-5 gap-y-2 xl:max-h-[93vh] overflow-y-auto"  style="scrollbar-width:none">
                             @forelse ($posts_populer as $post_populer)
                                 <article class="relative flex gap-2 group">
-                                    <img src="{{ $post_populer->image }}" alt="{{ $post_populer->slug }}"
+                                    <img src="{{ Storage::url($post_populer->image) }}" alt="{{ $post_populer->slug }}"
                                         class="w-32 aspect-video object-cover rounded-lg group-hover:opacity-90 transition-opacity ease-in-out duration-300">
                                     <a href="{{ route('posts.show', $post_populer) }}"
                                         class="absolute top-0 left-0 w-full h-full"></a>

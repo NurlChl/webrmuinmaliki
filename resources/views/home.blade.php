@@ -2,7 +2,7 @@
     @slot('tittle', 'Home')
     @vite('resources/css/3dgalleries.css')
 
-    <x-hero-section imageContent="{{ url('/') }}/logo/uin.jpeg">selamat datang di</x-hero-section>
+    <x-hero-section imageContent="{{ Storage::url('logo/uin.jpeg')}}">selamat datang di</x-hero-section>
     <x-container class="flex flex-col mx-auto max-w-3xl lg:w-full md:mt-10 lg:max-w-7xl bg-white p-5">
         <div class="flex flex-col w-full lg:flex-row gap-10 mx-auto">
             <section class="max-w-screen-md basis-3/4 flex flex-col gap-7 sm:gap-10 w-full">
@@ -257,7 +257,7 @@
                     <div class="slider" style="--quantity: {{ $totalGalleries }}">
                         @foreach ($galleries as $gallery)
                             <div class="item" style="--position: {{ $loop->iteration }}"><img
-                                    src="{{ $gallery->image }}" alt="slide"></div>
+                                    src="{{ Storage::url($gallery->image) }}" alt="slide"></div>
                         @endforeach
                     </div>
                     <div class="content">

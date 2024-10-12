@@ -5,7 +5,7 @@
 
 
 <div class="flex gap-2 content-center pt-2">
-    <img src="http://projekuin.test/logo/logorm.png" alt="logorm" class="w-12 lg:w-24" {{ $attributes }}>
+    <img src="{{ Storage::url('logo/logorm.png')}}" alt="logorm" class="w-12 lg:w-24" {{ $attributes }}>
     <div class="content-center hidden lg:block">
         <p class="font-bold text-xl text-green-700 uppercase">Republik Mahasiswa</p>
         <p class="font-bold text-xl text-green-700 uppercase">UIN Maliki</p>
