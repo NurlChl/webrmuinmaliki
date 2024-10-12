@@ -2,7 +2,7 @@
 
     @slot('tittle', 'Anggota')
 
-    <x-hero-section imageContent="{{ Storage::url('logo/aspirasi.jpg')}}">Anggota</x-hero-section>
+    <x-hero-section imageContent="{{ Storage::url('logo/aspirasi.jpg') }}">Anggota</x-hero-section>
 
     <x-container>
 

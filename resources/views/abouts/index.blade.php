@@ -2,7 +2,7 @@
 
     @slot('tittle', 'Tentang')
 
-    <x-hero-section imageContent="{{ url('/') }}/logo/uin.jpeg">Tentang</x-hero-section>
+    <x-hero-section imageContent="{{ Storage::url('logo/uin.jpeg')}}">Tentang</x-hero-section>
 
     <main class="relative pt-8 pb-16 lg:pt-16 lg:pb-24 sm:px-5 bg-white dark:bg-gray-900 antialiased">
         <div class="flex flex-col px-4 mx-auto max-w-screen-lg ">

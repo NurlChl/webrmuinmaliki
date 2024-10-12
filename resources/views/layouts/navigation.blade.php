@@ -5,7 +5,7 @@
         $navStyleAuth = 'justify-between';
     @endphp
 
-    <img src="{{ url('/') }}/logo/bg_nav.jpg" alt="bg-nav"
+    <img src="{{ Storage::url('logo/bg_nav.jpg') }}" alt="bg-nav"
         class="absolute top-0 left-0 w-full h-full object-cover opacity-30">
 
     <!-- Logo -->
