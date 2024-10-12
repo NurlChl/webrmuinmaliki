@@ -5,7 +5,7 @@
     <x-side-nav>
         <main class="relative pb-16 pt-16 lg:pb-24 sm:px-5 bg-white dark:bg-gray-900 antialiased">
             @auth
-                @if (auth()->user()->isAdmin())
+                @if (auth()->user()->isAdmin() || auth()->user()->isPartner())
                     <div class="flex gap-3 mb-2 absolute top-0 right-0 bg-yellow-200 py-3 px-7 rounded-bl-full">
                         <a href="{{ route('abouts.edit', $about) }}" class=" flex space-x-1 text-yellow-600 hover:underline">
                             <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"

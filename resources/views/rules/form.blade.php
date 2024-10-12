@@ -36,30 +36,33 @@
                                 :value="__('image')">Upload file</label>
                             <label for="file"
                                 class="flex flex-nowrap items-center overflow-hidden rounded-lg cursor-pointer border border-slate-300 bg-slate-50 ">
-                                <span class="bg-slate-800 text-sm font-semibold text-white py-2.5 p-4 sm:whitespace-nowrap">Choose
+                                <span
+                                    class="bg-slate-800 text-sm font-semibold text-white py-2.5 p-4 sm:whitespace-nowrap">Choose
                                     File</span>
                                 <div class="flex flex-nowrap items-center overflow-hidden">
                                     <span id="file-name"
                                         class="text-center text-sm pl-4 truncate max-w-full hidden sm:block">{{ old('file', $fileName) }}</span>
                                     <span id="file-name-sm"
                                         class="text-center text-sm pl-4  sm:hidden">{{ Str::limit(old('file', $fileName), 10) }}</span>
-                                    <span id="file-extension" class=" text-sm pr-2 sm:pr-4">{{isset($rule->file) ?   '.' . $fileExtension : 'No file chosen' }}</span>
+                                    <span id="file-extension"
+                                        class=" text-sm pr-2 sm:pr-4">{{ isset($rule->file) ? '.' . $fileExtension : 'No file chosen' }}</span>
                                 </div>
 
                             </label>
                             <input
                                 class="sr-only block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                aria-describedby="file_input_help" id="file" name="file" type="file" onchange="updateFileName(this)">
+                                aria-describedby="file_input_help" id="file" name="file" type="file"
+                                onchange="updateFileName(this)">
                             <p class="mt-1 text-xs text-gray-500 dark:text-gray-300" id="file_input_help">PDF, WORD, XLS
                                 or DOCS (MAX. 2MB).</p>
                             <x-input-error :messages="$errors->get('file')" />
                         </div>
 
                         <div class="sm:col-span-2">
-                            <label for="period" :value="__('period')" 
+                            <label for="period" :value="__('period')"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Periode</label>
-                            <input type="number" name="period" id="period" min='2021' max='{{ Now()->format('Y') }}'
-                                value="{{ old('period', $rule->period) }}"
+                            <input type="number" name="period" id="period" min='2021'
+                                max='{{ Now()->format('Y') }}' value="{{ old('period', $rule->period) }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
                                 placeholder="Masukkan tahun (2021-sekarang)" required>
                             <x-input-error :messages="$errors->get('period')" />

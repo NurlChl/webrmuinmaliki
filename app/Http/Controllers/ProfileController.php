@@ -48,6 +48,11 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        if ($user->isAdmin() || $user->isPartner()) {
+            return back()->with('error', 'Maaf Admin atau Partner tidak boleh hapus akun');
+        }
+
+
         Auth::logout();
 
         $user->delete();

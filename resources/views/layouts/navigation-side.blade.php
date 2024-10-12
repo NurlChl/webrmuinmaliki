@@ -242,6 +242,16 @@
                         <span class="flex-1 ml-3 whitespace-nowrap">Usulan</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('user_roles.index') }}"
+                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg {{ request()->routeIs('user_roles*') ? 'bg-gray-100' : '' }}  hover:bg-gray-100  group">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75  group-hover:text-gray-900  {{ request()->routeIs('user_roles*') ? 'text-gray-900' : '' }}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                          </svg>                          
+
+                        <span class="flex-1 ml-3 whitespace-nowrap">Pengguna</span>
+                    </a>
+                </li>
 
                 <li>
                     <button type="button"

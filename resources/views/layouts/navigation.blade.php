@@ -139,7 +139,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                @if (auth()->user()->isAdmin())
+                                @if (auth()->user()->isAdmin() || auth()->user()->isPartner())
                                     <x-dropdown-link :href="route('dashboard')">
                                         {{ __('DASHBOARD') }}
                                     </x-dropdown-link>
@@ -410,7 +410,7 @@
             <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
                 <!--- Autentikasi --->
                 @auth
-                    @if (auth()->user()->isAdmin())
+                    @if (auth()->user()->isAdmin() || auth()->user()->isPartner())
                         <li>
                             <a href="{{ route('dashboard') }}"
                                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('dashboard') ? 'bg-gray-100' : '' }}">

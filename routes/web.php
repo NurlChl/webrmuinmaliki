@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\RuleCategoryController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\UserRoleController;
 use App\Http\Middleware\HasRoleAdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('rule_categories', RuleCategoryController::class)->except(['show']);
             Route::resource('abouts', AboutController::class)->except(['index', 'show']);
             Route::resource('extracurriculars', ExtracurricularController::class)->except(['index', 'show']);
+            Route::resource('user_roles', UserRoleController::class)->except(['show']);
 
             Route::delete('bulk-delete/posts', [PostController::class, 'bulkDelete'])->name('posts.bulkDelete');
             Route::delete('bulk-delete/members', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
