@@ -17,7 +17,7 @@
                                     <!-- Item -->
                                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                         <img src="{{ Storage::url($carousel->image) }}"
-                                            class="absolute block w-full aspect-video -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                            class="absolute block w-full aspect-video object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                                             alt="{{ $carousel->tittle }}">
                                         <a href="{{ route('posts.show', $carousel) }}"
                                             class="absolute top-0 left-0 w-full h-full group">

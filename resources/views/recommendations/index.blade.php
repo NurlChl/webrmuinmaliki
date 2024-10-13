@@ -12,7 +12,7 @@
                             class="p-6 flex flex-col justify-between bg-white rounded-lg border border-gray-200 shadow-md">
                             <div>
                                 <div class="flex justify-between items-center mb-5 text-gray-500">
-                                    <a href="#"
+                                    <a
                                         class="bg-{{ $recommendation->faculty->color }}-100 text-{{ $recommendation->faculty->color }}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded ">
                                         <svg class="mr-1 w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             fill="currentColor" viewBox="0 0 20 20">

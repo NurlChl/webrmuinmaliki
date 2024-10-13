@@ -164,7 +164,7 @@
                                                     Hapus
                                                 </button>
                                                 <x-popup-modal-delete id="popup-modal-delete"
-                                                    message="Anda yakin mau menghapus berita terpilih ini?"
+                                                    message="Anda yakin mau menghapus kategori ini?"
                                                     confirmText="Ya, saya setuju" cancelText="Batal" />
                                             </form>
                                         </div>

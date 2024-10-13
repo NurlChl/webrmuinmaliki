@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\Rule;
-use App\Models\RuleCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
