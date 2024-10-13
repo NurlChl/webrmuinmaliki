@@ -26,6 +26,8 @@
     <meta name="author" content="Nurl_Chl & Fitriasnt__">
     <meta name="description" content="Ini adalah website yang dikembangkan oleh Nurl_Chl & Fitriasnt__">
 
+    <link rel="icon" href="{{ Storage::url('logo/favicon-32x32.png') }}" type="image/x-icon">
+
     <title>{{ isset($tittle) ? $tittle . ' / ' . config('app.name', 'Laravel') : config('app.name', 'Laravel') }}
     </title>
 

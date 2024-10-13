@@ -44,7 +44,7 @@
                         <p class="text-emerald-900 text-center text-sm sm:text-base">Peraturan</p>
                     </div>
                 </div>
-
+                
                 {!! $about->body !!}
 
 
